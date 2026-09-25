@@ -25,16 +25,16 @@ interface Project {
 
 const PROJECTS_DATA: Project[] = [
   {
-    id: 'agentic-scraper',
-    title: 'AGENTIC SCRAPER',
+    id: 'agentic-compliance',
+    title: 'AGENTIC COMPLIANCE SYSTEM',
     category: 'DEVELOPMENT',
     role: 'Software Engineer',
-    stack: 'Temporal / Playwright / LLMs / DOM Parsing',
+    stack: 'Temporal / Python / LLMs / DOM Analysis',
     client: 'KYC Hub (Internal)',
     year: '2026',
     image: '/monolith_project.jpg',
-    summary: 'An agentic system automating compliance onboarding by analyzing DOM structures and dynamically generating schemas.',
-    content: 'Developed an agentic solution to automate onboarding of compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings. These mappings are used to create scraping scripts. Managed the scalable, long-running activities and workflows using Temporal, ensuring reliable execution.'
+    summary: 'An agentic system automating compliance source onboarding by analyzing DOM structures and dynamically generating schemas.',
+    content: 'Developed an agentic solution to automate the onboarding of global compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings for structured data extraction. Utilized Temporal to manage scalable, distributed activities and execution processes, ensuring high reliability.'
   },
   {
     id: 'quantum-chatbot',
@@ -79,7 +79,7 @@ const EXPERIENCE_DATA = [
     period: 'JAN 2026 — PRESENT',
     company: 'KYC HUB',
     role: 'Software Engineer (Remote)',
-    description: 'Designed agentic scraper onboarding workflows. Managed long-running extraction tasks with Temporal and engineered DOM-structure analyses for script automation.'
+    description: 'Designed agentic onboarding systems for compliance sources. Managed scalable, long-running extraction processes with Temporal and engineered autonomous DOM-structure analyses.'
   },
   {
     period: 'FEB 2025 — AUG 2025',
@@ -246,7 +246,7 @@ function App() {
           
           <div className="container relative z-10 w-full flex flex-col items-start text-left">
             <span className="font-mono text-xs tracking-widest text-neutral-500 uppercase mb-4 block">
-              COGNITIVE WORKFLOWS & DECISION PIPELINES
+              COGNITIVE ARCHITECTURES & DECISION TREES
             </span>
             <h1 className="text-9xl uppercase font-bold tracking-tighter leading-none mb-6">
               DHRUV<br />
@@ -269,8 +269,8 @@ function App() {
               </div>
             </div>
 
-            <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '42rem', lineHeight: '1.25' }}>
-              Software engineer building agentic scrapers, automated workflows, and cognitive decision trees with mathematical structure.
+            <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '44rem', lineHeight: '1.25' }}>
+              AI/ML Engineer and Software Engineer building cognitive decision trees with mathematical structure. Currently diving into robotics engineering.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -318,10 +318,10 @@ function App() {
               </div>
               <div className="col-span-8 lg:col-span-12 flex flex-col gap-6">
                 <p className="text-xl text-black drop-cap-box leading-relaxed font-normal">
-                  I believed that software systems were logical structures of automation. My work focused on agentic automation. I ran complex Temporal workflows and automated document retrieval pipelines using LLMs. By designing code with strict alignments, we optimized operations and eliminated human scraper overhead.
+                  I believed that software systems were logical structures of automation. My work focused on agentic systems and AI architectures. I engineered resilient distributed execution pipelines and automated document retrieval systems using LLMs. By designing code with strict mathematical alignments, we optimized operational efficiency and eliminated manual engineering overhead.
                 </p>
                 <p className="text-lg text-muted leading-relaxed">
-                  My workflow was architecturally structured around data flows. From implementing real-time geospatial terminal trackers in Python at Hughes, to indexing multi-format candidate resumes in Elasticsearch at Shorthills AI, I built digital architectures that scaled cleanly and operated with absolute reliability.
+                  My engineering approach was architecturally structured around data flows and cognitive systems. From implementing real-time geospatial terminal trackers in Python at Hughes, to indexing multi-format candidate resumes in Elasticsearch at Shorthills AI, I built digital architectures that scaled cleanly and operated with absolute reliability.
                 </p>
               </div>
             </div>
