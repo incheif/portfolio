@@ -37,16 +37,16 @@ const PROJECTS_DATA: Project[] = [
     content: 'Developed an agentic solution to automate the onboarding of global compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings for structured data extraction. Utilized Temporal to manage scalable, distributed activities and execution processes, ensuring high reliability.'
   },
   {
-    id: 'quantum-chatbot',
-    title: 'QUANTUM PHYSICS CHATBOT',
+    id: 'research-paper-analyser',
+    title: 'RESEARCH PAPER ANALYSER',
     category: 'DESIGN',
     role: 'Creator & Developer',
     stack: 'LangChain / Groq / Gemini / FAISS Vector Embeddings',
     client: 'Personal Project',
     year: '2025',
     image: '/aether_project.jpg',
-    summary: 'A RAG-powered cognitive chat system queryable over complex physics research papers with multi-modal parsing capabilities.',
-    content: 'Engineered a Retrieval-Augmented Generation (RAG) system using LangChain and Groq for high-speed inference. Implemented semantic search pipelines with Google Gemini embeddings and FAISS vector stores to provide context-aware document analysis. The modular architecture parses mathematical notation and diagrams, translating intricate papers into accessible text.'
+    summary: 'A Live RAG system enabling intelligent querying of complex research papers with multi-modal parsing capabilities.',
+    content: 'Engineered a Live RAG system using LangChain and Groq to enable intelligent querying of complex research papers, achieving high-speed inference with optimized latency. Implemented advanced semantic retrieval pipelines using Google Gemini and FAISS vector embeddings, allowing for context-aware document analysis and accurate information extraction. Designed a modular architecture to handle multi-modal input processing for diagrams and mathematical notation.'
   },
   {
     id: 'automated-quality',
