@@ -169,7 +169,7 @@ const EXPERIENCE_DATA = [
     period: 'JAN 2026 — PRESENT',
     company: 'KYC HUB',
     role: 'Software Engineer (Remote)',
-    description: 'Designed agentic onboarding systems for compliance sources. Managed scalable, long-running extraction processes with Temporal and engineered autonomous DOM-structure analyses.'
+    description: 'Architected agentic AI for automating AML based data sources onboarding and data ingestion for maintaining a database for sanctioned, criminal or politically exposed entities; deployed Temporal for distributed workflow orchestration and automated DOM extraction pipelines.'
   },
   {
     period: 'FEB 2025 — AUG 2025',
@@ -361,7 +361,7 @@ function App() {
             </div>
 
             <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '52rem', lineHeight: '1.3' }}>
-              I'm Dhruv Gupta, an AI/ML Engineer & Systems Architect. I design agentic AI workflows that self-plan, validate, and execute complex operations. Currently diving into physical AI and robotics.
+              I am an Applied AI Engineer. I design AI workflows that self-plan, validate, and execute complex operations. Currently diving into physical AI and robotics.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -386,7 +386,7 @@ function App() {
               <div className="flex flex-wrap gap-x-12 gap-y-4 font-mono text-xs text-muted py-2 border-t border-black w-full justify-between mt-8">
                 <span>[ ALMA MATER : DELHI TECHNOLOGICAL UNIVERSITY (DTU) ]</span>
                 <span>[ FOCUS : AGENTIC SYSTEMS, PHYSICAL AI & ROBOTICS ]</span>
-                <span>[ STACK : PYTHON / ROS 2 / TEMPORAL / FASTAPI / DOCKER ]</span>
+                <span>[ STACK : PYTHON / ROS 2 / FASTAPI / JAVASCRIPT ]</span>
               </div>
             </div>
           </div>
@@ -854,38 +854,11 @@ function App() {
                 </button>
               </div>
 
-              {/* Title & Quick Actions */}
-              <div className="flex justify-between items-start gap-4 mb-6 flex-wrap">
+              {/* Title */}
+              <div className="mb-6">
                 <h2 className="text-4xl sm:text-5xl font-bold tracking-tight uppercase leading-none">
                   {selectedProject.title}
                 </h2>
-                <div className="flex items-center gap-2 flex-wrap">
-                  {selectedProject.liveUrl && (
-                    <a
-                      href={selectedProject.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="border border-black px-3.5 py-2 font-mono text-xs uppercase bg-black text-white hover:bg-neutral-800 flex items-center gap-2 font-bold cursor-pointer"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Globe size={13} />
-                      Live Demo
-                      <ExternalLink size={11} />
-                    </a>
-                  )}
-                  {selectedProject.githubUrl && (
-                    <a
-                      href={selectedProject.githubUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="border border-black px-3.5 py-2 font-mono text-xs uppercase bg-white text-black hover:bg-neutral-100 flex items-center gap-2 font-bold cursor-pointer"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <GithubIcon size={13} />
-                      Repository
-                    </a>
-                  )}
-                </div>
               </div>
 
               {/* Single Image Viewport Frame in Modal */}
