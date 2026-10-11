@@ -30,11 +30,6 @@ const GithubIcon: React.FC<{ size?: number; className?: string }> = ({ size = 16
   </svg>
 );
 
-interface ScreenshotItem {
-  src: string;
-  label: string;
-}
-
 interface Project {
   id: string;
   title: string;
@@ -50,7 +45,6 @@ interface Project {
   githubUrl?: string;
   liveUrl?: string;
   badge?: string;
-  screenshots?: ScreenshotItem[];
   highlights?: string[];
 }
 
@@ -74,11 +68,6 @@ const PROJECTS_DATA: Project[] = [
       'Google Gemini VLA multimodal reasoning & 3D tabletop spatial semantic mapping',
       '60 FPS Rapier3D rigid-body kinematics with closed-loop Cartesian trajectory planning',
       'Interactive Three.js 3D WebGL digital twin studio with native ROS 2 topic bridges'
-    ],
-    screenshots: [
-      { src: '/aero_studio_tower.png', label: '3D WebGL Studio & Multi-Layer Tower Assembly' },
-      { src: '/demo_aero_manipulation.webp', label: '60 FPS Live Kinematic Manipulation Demo' },
-      { src: '/aero_execution_logs.png', label: 'Real-Time Telemetry & IK Execution Stream' }
     ]
   },
   {
@@ -100,11 +89,6 @@ const PROJECTS_DATA: Project[] = [
       'Split-screen academic synthesis & verifiable verbatim citation attribution',
       'Sub-second hybrid LLM routing between Google Gemini 2.5 and Groq Llama 3.3 70B',
       'Adaptive tri-tier semantic chunking engine with PyMuPDF extraction'
-    ],
-    screenshots: [
-      { src: '/02-paper-synthesis.png', label: 'Split-Screen Academic Synthesis & Structured Monograph' },
-      { src: '/03-chat-interrogation.png', label: 'Conversational RAG Interrogation & Verified Citations' },
-      { src: '/01-landing-workspace.png', label: 'Multi-Document Ingestion & Semantic Chunking Profiles' }
     ]
   },
   {
@@ -124,9 +108,6 @@ const PROJECTS_DATA: Project[] = [
       'Autonomous DOM structure analysis synthesizing execution plans & schema mappings',
       'Temporal workflow orchestration managing resilient, fault-tolerant distributed scrapers',
       'Zero-shot extraction pipeline eliminating manual compliance onboarding overhead'
-    ],
-    screenshots: [
-      { src: '/monolith_project.jpg', label: 'Distributed Schema & Execution State Topology' }
     ]
   },
   {
@@ -147,9 +128,6 @@ const PROJECTS_DATA: Project[] = [
       'Geospatial incident clustering & polygon geofencing logic for city hazard tracking',
       'Democratic community prioritization with real-time voting & transparency tallies',
       'Interactive mapping UI with Leaflet, OpenStreetMap, and responsive mobile architecture'
-    ],
-    screenshots: [
-      { src: '/aether_project.jpg', label: 'Geospatial Civic Hazard Clustering & Community Triage' }
     ]
   },
   {
@@ -169,9 +147,6 @@ const PROJECTS_DATA: Project[] = [
       'Deep learning CNN & YOLOv8 models verifying antenna alignment and placement',
       'Automated quality sign-off pipeline reducing field inspection turnaround',
       'Real-time edge image inference with OpenCV and PyTorch'
-    ],
-    screenshots: [
-      { src: '/kinetic_project.jpg', label: 'Computer Vision Antenna Detection Pipeline' }
     ]
   },
   {
@@ -191,9 +166,6 @@ const PROJECTS_DATA: Project[] = [
       'Candidate-job semantic matching & ranking using Elasticsearch and Azure OpenAI',
       'Heterogeneous resume ingestion pipeline via LlamaParse and Tesseract OCR',
       'High-throughput vector search using OpenAI text embeddings'
-    ],
-    screenshots: [
-      { src: '/bauhaus_project.jpg', label: 'Semantic Matching & Candidate Indexing Dashboard' }
     ]
   }
 ];
@@ -222,7 +194,6 @@ const EXPERIENCE_DATA = [
 function App() {
   const [activeCategory, setActiveCategory] = useState<'ALL' | 'DEVELOPMENT' | 'DESIGN'>('ALL');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [activeModalImage, setActiveModalImage] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -232,17 +203,11 @@ function App() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setSelectedProject(null);
-        setActiveModalImage(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
-
-  const openProjectModal = (project: Project) => {
-    setSelectedProject(project);
-    setActiveModalImage(project.image);
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -477,7 +442,7 @@ function App() {
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 02 ]</div>
-                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">05+</div>
+                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">06+</div>
                 <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">AI & ROBOTIC SYSTEMS</div>
               </div>
               <div>
@@ -528,98 +493,109 @@ function App() {
               </div>
             </div>
 
-            {/* Editorial Projects Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-12">
-              {filteredProjects.map(project => (
+            {/* Editorial Project Placards Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-8">
+              {filteredProjects.map((project, idx) => (
                 <div 
                   key={project.id} 
-                  className="group cursor-pointer flex flex-col items-stretch text-left"
-                  onClick={() => openProjectModal(project)}
+                  className="project-placard text-left"
                 >
-                  {/* Card Container for Image */}
-                  <div className="relative border-2 border-black overflow-hidden aspect-[3/2] mb-6 transition-all duration-100 group-hover:border-[4px] bg-neutral-100">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
-                    />
-                    
-                    {/* Top Badges */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="bg-black text-white font-mono text-xs px-3 py-1 font-semibold">
+                  {/* Top Placard Badge Bar */}
+                  <div className="placard-badge-bar">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-bold text-neutral-500 tracking-wider">
+                        [ SPECIMEN 0{idx + 1} ]
+                      </span>
+                      <span className="bg-black text-white font-mono text-xs px-2 py-0.5 font-semibold">
                         {project.year}
                       </span>
                       {project.badge && (
-                        <span className="bg-white text-black border border-black font-mono text-xs px-2.5 py-1 font-bold">
+                        <span className="bg-neutral-100 text-black border border-black font-mono text-xs px-2 py-0.5 font-bold">
                           {project.badge}
                         </span>
                       )}
                     </div>
 
-                    {/* Live indicator if deployed */}
-                    {project.liveUrl && (
-                      <div className="absolute top-4 right-4 bg-black text-white font-mono text-xs px-3 py-1 flex items-center gap-2 font-bold">
-                        <span className="live-pulse" />
-                        <span>LIVE</span>
-                      </div>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {project.liveUrl && (
+                        <span className="font-mono text-xs text-black font-bold flex items-center gap-1.5 bg-neutral-100 px-2 py-0.5 border border-neutral-300">
+                          <span className="live-pulse" />
+                          <span>LIVE</span>
+                        </span>
+                      )}
+                      <span className="font-mono text-xs text-muted tracking-widest font-semibold">
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="flex justify-between items-baseline mb-3 py-2 border-b border-neutral-200">
-                    <h3 className="text-3xl font-bold tracking-tight text-black">
-                      {project.title}
-                    </h3>
-                    <span className="font-mono text-xs text-muted">
-                      {project.category}
-                    </span>
+                  {/* Specimen Frame (Single Image) */}
+                  <div 
+                    className="placard-specimen-frame cursor-pointer"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="placard-specimen-img"
+                    />
                   </div>
+
+                  {/* Placard Title */}
+                  <h3 
+                    className="placard-title cursor-pointer hover:underline"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    {project.title}
+                  </h3>
 
                   {/* Tech Stack Chips */}
-                  <div className="flex flex-wrap gap-1 mb-3">
+                  <div className="placard-tech-list">
                     {project.stack.split(' / ').map((tech, i) => (
-                      <span 
-                        key={i} 
-                        className="font-mono text-[10px] uppercase tracking-wider bg-neutral-100 border border-neutral-300 px-2 py-0.5 text-neutral-800 font-semibold"
-                      >
+                      <span key={i} className="tech-tag">
                         {tech.trim()}
                       </span>
                     ))}
                   </div>
 
-                  <p className="text-sm text-neutral-700 mb-4 leading-relaxed">
+                  {/* Placard Summary */}
+                  <p className="placard-summary">
                     {project.summary}
                   </p>
 
-                  {/* Architectural Specifications / Highlights */}
+                  {/* Key Architectural Highlights */}
                   {project.highlights && project.highlights.length > 0 && (
-                    <div className="mb-5 space-y-1.5 border-l-2 border-black pl-3 py-1 bg-neutral-50 flex-1">
+                    <div className="placard-highlights">
                       {project.highlights.map((h, i) => (
-                        <div key={i} className="text-xs text-neutral-600 flex items-start gap-1.5 leading-snug">
-                          <span className="text-black font-bold text-[10px] mt-0.5">▪</span>
+                        <div key={i} className="highlight-item">
+                          <span className="text-black font-bold">▪</span>
                           <span>{h}</span>
                         </div>
                       ))}
                     </div>
                   )}
 
-                  {/* Card Action Row */}
-                  <div className="flex items-center justify-between pt-2 border-t border-neutral-200">
-                    <div className="flex items-center gap-2 font-mono text-xs text-black uppercase font-medium group-hover:underline">
-                      Analyze Specification <ArrowRight size={14} />
-                    </div>
+                  {/* Placard Footer Action Row */}
+                  <div className="placard-footer">
+                    <button 
+                      className="placard-action-btn"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      Analyze Specification <ArrowRight size={13} />
+                    </button>
 
-                    <div className="flex items-center gap-3" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex items-center gap-2">
                       {project.liveUrl && (
                         <a 
                           href={project.liveUrl} 
                           target="_blank" 
                           rel="noreferrer" 
-                          className="font-mono text-xs font-bold text-black flex items-center gap-1 hover:underline"
-                          title="Open Live App"
+                          className="placard-pill-btn primary"
+                          title="Open Live Deployment"
                         >
-                          <Globe size={13} />
+                          <Globe size={11} />
                           <span>Demo</span>
-                          <ExternalLink size={11} />
+                          <ExternalLink size={10} />
                         </a>
                       )}
                       {project.githubUrl && (
@@ -627,10 +603,10 @@ function App() {
                           href={project.githubUrl} 
                           target="_blank" 
                           rel="noreferrer" 
-                          className="text-black hover:opacity-70 flex items-center gap-1 font-mono text-xs font-semibold"
+                          className="placard-pill-btn"
                           title="View GitHub Repository"
                         >
-                          <GithubIcon size={14} />
+                          <GithubIcon size={12} />
                           <span>Code</span>
                         </a>
                       )}
@@ -645,18 +621,18 @@ function App() {
         {/* HEAVY SECTION DIVIDER */}
         <hr className="hr-thick" />
 
-        {/* TIMELINE / EXPERIENCE SECTION (COMPACT EDITORIAL DESIGN) */}
-        <section id="experience" className="py-12 md:py-8 bg-muted relative border-y border-neutral-300">
+        {/* TIMELINE / EXPERIENCE SECTION */}
+        <section id="experience" className="py-16 md:py-12 bg-muted relative border-y border-neutral-300">
           {/* Subtle Diagonal Lines Texture */}
           <div className="absolute inset-0 texture-diagonal opacity-5 pointer-events-none"></div>
 
           <div className="container relative z-10">
-            <div className="flex justify-between items-end md:flex-col md:items-start md:gap-2 mb-8">
+            <div className="flex justify-between items-end md:flex-col md:items-start md:gap-2 mb-10">
               <div>
                 <span className="font-mono text-xs tracking-widest text-muted block mb-1 uppercase">
                   03 / TIMELINE
                 </span>
-                <h2 className="text-3xl md:text-2xl font-bold uppercase tracking-tight leading-none text-black">
+                <h2 className="text-4xl md:text-3xl font-bold uppercase tracking-tight leading-none text-black">
                   CHRONICLES OF EXPERIENCE
                 </h2>
               </div>
@@ -670,24 +646,24 @@ function App() {
               {EXPERIENCE_DATA.map((exp, idx) => (
                 <div 
                   key={idx} 
-                  className="bg-white border-2 border-black p-5 flex flex-col justify-between text-left shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-transform"
+                  className="timeline-card text-left"
                 >
                   <div>
-                    <div className="flex justify-between items-center mb-2.5 pb-2 border-b border-neutral-200">
-                      <span className="font-mono text-[11px] font-bold text-neutral-600 tracking-wider">
+                    <div className="flex justify-between items-center mb-3 pb-2 border-b border-neutral-200">
+                      <span className="font-mono text-xs font-bold text-neutral-600 tracking-wider">
                         {exp.period}
                       </span>
-                      <span className="font-mono text-[10px] bg-black text-white px-2 py-0.5 font-bold">
+                      <span className="font-mono text-xs bg-black text-white px-2 py-0.5 font-bold">
                         0{idx + 1}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-black uppercase tracking-tight mb-1">
+                    <h3 className="text-2xl font-bold text-black uppercase tracking-tight mb-1">
                       {exp.company}
                     </h3>
                     <span className="font-mono text-xs text-neutral-700 block mb-3 font-semibold">
                       {exp.role}
                     </span>
-                    <p className="text-xs text-neutral-600 leading-relaxed">
+                    <p className="text-sm text-neutral-600 leading-relaxed">
                       {exp.description}
                     </p>
                   </div>
@@ -842,10 +818,7 @@ function App() {
       {selectedProject && (
         <div 
           className="fixed inset-0 z-100 flex items-center justify-center bg-black bg-opacity-70 p-6 md:p-4 overflow-y-auto"
-          onClick={() => {
-            setSelectedProject(null);
-            setActiveModalImage(null);
-          }}
+          onClick={() => setSelectedProject(null)}
         >
           {/* Modal Content */}
           <div 
@@ -870,10 +843,7 @@ function App() {
                   )}
                 </div>
                 <button 
-                  onClick={() => {
-                    setSelectedProject(null);
-                    setActiveModalImage(null);
-                  }}
+                  onClick={() => setSelectedProject(null)}
                   className="border border-black px-4 py-2 font-mono text-xs uppercase hover:bg-black hover:text-white cursor-pointer bg-transparent focus-ring font-bold"
                 >
                   CLOSE
@@ -914,38 +884,14 @@ function App() {
                 </div>
               </div>
 
-              {/* Main Preview Image in Modal */}
-              <div className="border-2 border-black w-full overflow-hidden aspect-[16/9] mb-4 bg-neutral-100">
+              {/* Single Image Viewport Frame in Modal */}
+              <div className="modal-image-frame">
                 <img 
-                  src={activeModalImage || selectedProject.image} 
+                  src={selectedProject.image} 
                   alt={selectedProject.title} 
-                  className="w-full h-full object-cover grayscale-0"
+                  className="modal-image"
                 />
               </div>
-
-              {/* Screenshot Gallery Picker */}
-              {selectedProject.screenshots && selectedProject.screenshots.length > 1 && (
-                <div className="flex gap-3 mb-8 overflow-x-auto pb-2">
-                  {selectedProject.screenshots.map((s, idx) => {
-                    const isCurrent = (activeModalImage || selectedProject.image) === s.src;
-                    return (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveModalImage(s.src)}
-                        className={`border-2 p-1.5 bg-white cursor-pointer transition-all flex items-center gap-2 text-left ${
-                          isCurrent ? 'border-black bg-neutral-100' : 'border-neutral-300 opacity-60 hover:opacity-100'
-                        }`}
-                        style={{ minWidth: '180px' }}
-                      >
-                        <img src={s.src} alt={s.label} className="w-16 h-10 object-cover border border-neutral-200" />
-                        <span className="font-mono text-xs text-neutral-800 leading-tight block">
-                          {s.label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
 
               {/* Specification Grid */}
               <div className="grid grid-cols-12 gap-8 md:grid-cols-1 md:gap-6">
@@ -1001,23 +947,28 @@ function App() {
                   <p className="text-lg text-black drop-cap-box leading-relaxed font-normal">
                     {selectedProject.content}
                   </p>
-                  <p className="text-base text-muted leading-relaxed">
-                    By focusing on flat layout designs, heavy rules, and structured lines, we ensured that the work does not distract with transient decorations. The result is a highly functional, visual system built on pure grid theory.
-                  </p>
 
-                  {/* Modal Highlights Specification List */}
+                  {/* Highlights Specification in Modal */}
                   {selectedProject.highlights && selectedProject.highlights.length > 0 && (
-                    <div className="border border-neutral-300 p-4 bg-neutral-50 text-left">
+                    <div className="border border-black p-4 bg-neutral-50 text-left">
                       <span className="font-mono text-xs font-bold uppercase tracking-wider block mb-2 text-black">
                         Key Architectural Specifications:
                       </span>
-                      <ul className="space-y-1.5 pl-4 list-disc text-xs text-neutral-700">
+                      <div className="flex flex-col gap-1.5">
                         {selectedProject.highlights.map((h, i) => (
-                          <li key={i}>{h}</li>
+                          <div key={i} className="font-mono text-xs text-neutral-700 flex items-start gap-2">
+                            <span className="text-black font-bold">▪</span>
+                            <span>{h}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   )}
+
+                  <p className="text-base text-muted leading-relaxed">
+                    Designed with strict spatial geometry and mathematical structure to eliminate transient decoration. Built for high operational performance and cognitive clarity.
+                  </p>
+
                   <div className="mt-4 flex gap-4 flex-wrap">
                     {selectedProject.liveUrl && (
                       <a 
@@ -1045,10 +996,7 @@ function App() {
                     )}
                     <Button 
                       variant="secondary" 
-                      onClick={() => {
-                        setSelectedProject(null);
-                        setActiveModalImage(null);
-                      }}
+                      onClick={() => setSelectedProject(null)}
                     >
                       Return to Catalog
                     </Button>
