@@ -361,7 +361,7 @@ function App() {
             </div>
 
             <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '52rem', lineHeight: '1.3' }}>
-              I'm Dhruv Gupta, an AI/ML Engineer & Systems Architect from Delhi Technological University (DTU). I design agentic AI workflows that self-plan, validate, and execute complex operations, while connecting machine intelligence to the physical world through robotics and spatial AI.
+              I'm Dhruv Gupta, an AI/ML Engineer & Systems Architect. I design agentic AI workflows that self-plan, validate, and execute complex operations. Currently diving into physical AI and robotics.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -398,47 +398,45 @@ function App() {
         {/* ABOUT / CAPABILITIES SECTION */}
         <section id="about" className="section-padding bg-white relative">
           <div className="container">
-            <div className="grid grid-cols-12 gap-12 lg:grid-cols-2 md:grid-cols-1 md:gap-8">
-              <div className="col-span-4 lg:col-span-12">
-                <span className="font-mono text-xs tracking-widest text-muted block mb-4 uppercase">
+            <div className="flex justify-between items-start md:flex-col md:gap-6 mb-12">
+              <div>
+                <span className="font-mono text-xs tracking-widest text-muted block mb-3 uppercase">
                   01 / CAPABILITIES & FOCUS
                 </span>
-                <h2 className="text-5xl font-bold tracking-tight uppercase leading-none text-black">
+                <h2 className="text-5xl md:text-4xl font-bold uppercase tracking-tight leading-none text-black">
                   SYSTEMS<br />ARCHITECTURE.
                 </h2>
               </div>
-              <div className="col-span-8 lg:col-span-12 flex flex-col gap-6">
-                <p className="text-xl text-black drop-cap-box leading-relaxed font-normal">
-                  I specialize in architecting production AI systems where models are grounded in deterministic execution logic. My engineering discipline spans designing agentic workflows that self-plan and validate complex tasks, building low-latency retrieval pipelines, and connecting machine intelligence to the physical world through robotics and spatial computing.
-                </p>
+              <p className="text-xl md:text-lg text-neutral-800 leading-relaxed font-normal max-w-2xl text-left">
+                I specialize in architecting production AI systems where models are grounded in deterministic execution logic. My engineering discipline spans designing agentic workflows that self-plan and validate complex tasks, building low-latency retrieval pipelines, and connecting machine intelligence to the physical world through robotics and spatial computing.
+              </p>
+            </div>
 
-                {/* 4 Core Pillars Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-1 gap-4 mt-2">
-                  <div className="capability-card">
-                    <span className="capability-title">01 / AGENTIC WORKFLOWS</span>
-                    <p className="capability-desc">
-                      Designing agentic AI workflows that self-plan, validate, and execute complex operations.
-                    </p>
-                  </div>
-                  <div className="capability-card">
-                    <span className="capability-title">02 / PHYSICAL AI & ROBOTICS</span>
-                    <p className="capability-desc">
-                      Connecting machine intelligence to the physical world through robotics and spatial AI.
-                    </p>
-                  </div>
-                  <div className="capability-card">
-                    <span className="capability-title">03 / LOW-LATENCY RAG</span>
-                    <p className="capability-desc">
-                      Building low-latency RAG architectures, multi-modal ingestion, and neural search engines.
-                    </p>
-                  </div>
-                  <div className="capability-card">
-                    <span className="capability-title">04 / DISTRIBUTED BACKENDS</span>
-                    <p className="capability-desc">
-                      Engineering fault-tolerant distributed backends with Temporal, FastAPI, and Docker.
-                    </p>
-                  </div>
-                </div>
+            {/* 4 Core Pillars Grid */}
+            <div className="grid grid-cols-4 lg:grid-cols-2 md:grid-cols-1 gap-6">
+              <div className="capability-card">
+                <span className="capability-title">01 / AGENTIC WORKFLOWS</span>
+                <p className="capability-desc">
+                  Designing agentic AI workflows that self-plan, validate, and execute complex operations.
+                </p>
+              </div>
+              <div className="capability-card">
+                <span className="capability-title">02 / PHYSICAL AI & ROBOTICS</span>
+                <p className="capability-desc">
+                  Connecting machine intelligence to the physical world through robotics and spatial AI.
+                </p>
+              </div>
+              <div className="capability-card">
+                <span className="capability-title">03 / LOW-LATENCY RAG</span>
+                <p className="capability-desc">
+                  Building low-latency RAG architectures, multi-modal ingestion, and neural search engines.
+                </p>
+              </div>
+              <div className="capability-card">
+                <span className="capability-title">04 / DISTRIBUTED BACKENDS</span>
+                <p className="capability-desc">
+                  Engineering fault-tolerant distributed backends with Temporal, FastAPI, and Docker.
+                </p>
               </div>
             </div>
           </div>
@@ -453,7 +451,7 @@ function App() {
           <div className="absolute inset-0 texture-vertical-white opacity-5 pointer-events-none"></div>
 
           <div className="container relative z-10">
-            <div className="grid grid-cols-4 md:grid-cols-2 gap-12 md:gap-8 text-left">
+            <div className="grid grid-cols-3 md:grid-cols-1 gap-12 md:gap-8 text-left">
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 01 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">8.13</div>
@@ -466,11 +464,6 @@ function App() {
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 03 ]</div>
-                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">60 FPS</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">REAL-TIME KINEMATICS SIMULATION</div>
-              </div>
-              <div>
-                <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 04 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">08+</div>
                 <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">DEV TOOLS, ROBOTICS & CLOUD PLATS</div>
               </div>
