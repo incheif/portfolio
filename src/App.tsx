@@ -245,7 +245,7 @@ function App() {
         {/* Desktop Navigation */}
         <nav className="flex items-center gap-2 md:flex md:flex-row md:items-center">
           <span className="md:inline-flex flex items-center gap-2 flex-wrap" style={{ display: 'flex' }}>
-            <a href="#about" className="nav-link focus-ring">01 / Focus</a>
+            <a href="#about" className="nav-link focus-ring">01 / About</a>
             <a href="#projects" className="nav-link focus-ring">02 / Works</a>
             <a href="#experience" className="nav-link focus-ring">03 / Timeline</a>
             <a href="#contact" className="nav-link focus-ring">04 / CTA</a>
@@ -284,7 +284,7 @@ function App() {
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
-              01 / FOCUS
+              01 / ABOUT
             </a>
             <a 
               href="#projects" 
@@ -398,16 +398,11 @@ function App() {
         {/* ABOUT / CAPABILITIES SECTION */}
         <section id="about" className="section-padding bg-white relative">
           <div className="container">
-            <div className="flex justify-between items-start md:flex-col md:gap-6 mb-12">
-              <div>
-                <span className="font-mono text-xs tracking-widest text-muted block mb-3 uppercase">
-                  01 / CAPABILITIES & FOCUS
-                </span>
-                <h2 className="text-5xl md:text-4xl font-bold uppercase tracking-tight leading-none text-black">
-                  SYSTEMS<br />ARCHITECTURE.
-                </h2>
-              </div>
-              <p className="text-xl md:text-lg text-neutral-800 leading-relaxed font-normal max-w-2xl text-left">
+            <div className="mb-12 text-left">
+              <span className="font-mono text-xs tracking-widest text-muted block mb-4 uppercase">
+                01 / ABOUT ME
+              </span>
+              <p className="text-2xl md:text-xl text-neutral-900 leading-relaxed font-normal max-w-4xl text-left" style={{ lineHeight: '1.4' }}>
                 I specialize in architecting production AI systems where models are grounded in deterministic execution logic. My engineering discipline spans designing agentic workflows that self-plan and validate complex tasks, building low-latency retrieval pipelines, and connecting machine intelligence to the physical world through robotics and spatial computing.
               </p>
             </div>
