@@ -35,16 +35,16 @@ interface Project {
   title: string;
   category: 'DEVELOPMENT' | 'DESIGN';
   categories?: ('DEVELOPMENT' | 'DESIGN')[];
-  role: string;
+  role?: string;
+  client?: string;
   stack: string;
-  client: string;
   year: string;
   image: string;
+  badge?: string;
   summary: string;
   content: string;
   githubUrl?: string;
   liveUrl?: string;
-  badge?: string;
   highlights?: string[];
 }
 
@@ -54,19 +54,17 @@ const PROJECTS_DATA: Project[] = [
     title: 'AERO: AGENTIC ROBOTIC OPERATIONS',
     category: 'DEVELOPMENT',
     categories: ['DEVELOPMENT'],
-    role: 'Robotics & AI Architect',
     stack: 'ROS 2 / Google Gemini VLA / Three.js WebGL / Rapier3D / Python / FastAPI',
-    client: 'Autonomous Robotics Lab',
     year: '2026',
     image: '/aero_studio_tower.png',
     badge: 'PHYSICAL AI',
     githubUrl: 'https://github.com/incheif/Aero',
     liveUrl: 'https://aero-studio.onrender.com/',
-    summary: 'An end-to-end cognitive robotic manipulation platform combining Vision-Language-Action (VLA) multimodal reasoning, 3D tabletop spatial semantic mapping, 60 FPS physics kinematics, and an interactive Three.js WebGL studio.',
-    content: 'AERO (Agentic Execution for Robotic Operations) bridges high-level multimodal reasoning with physical robotic execution. The platform translates natural-language commands into verified tabletop manipulation primitives using Google Gemini VLA models, persistent 3D spatial semantic memory, and active frontier exploration. Closed-loop Cartesian trajectory planning and geometric inverse kinematics execute against 60 FPS Rapier3D rigid-body dynamics, streaming continuous telemetry via WebSockets to a Three.js 3D WebGL digital twin studio and publishing to native ROS 2 topic bridges.',
+    summary: 'Connecting machine intelligence to the physical world through multimodal VLA reasoning, 3D tabletop spatial semantic mapping, and 60 FPS physics kinematics.',
+    content: 'AERO is an independently architected robotic manipulation platform connecting multimodal intelligence to physical operations. Translates natural-language instructions into tabletop manipulation trajectories using Google Gemini VLA reasoning, 3D spatial semantic affordance memories, and active frontier exploration. Operates closed-loop Cartesian trajectory planning and geometric inverse kinematics in 60 FPS Rapier3D physics, synchronizing with ROS 2 native message bridges and streaming real-time telemetry over WebSockets to an interactive Three.js WebGL digital twin studio.',
     highlights: [
-      'Google Gemini VLA multimodal reasoning & 3D tabletop spatial semantic mapping',
-      '60 FPS Rapier3D rigid-body kinematics with closed-loop Cartesian trajectory planning',
+      'Gemini VLA reasoning & 3D tabletop spatial semantic mapping',
+      '60 FPS Rapier3D physics kinematics with Cartesian trajectory interpolation',
       'Interactive Three.js 3D WebGL digital twin studio with native ROS 2 topic bridges'
     ]
   },
@@ -75,18 +73,16 @@ const PROJECTS_DATA: Project[] = [
     title: 'PAPERSCOPE_AI',
     category: 'DESIGN',
     categories: ['DEVELOPMENT', 'DESIGN'],
-    role: 'Full-Stack AI Engineer & Creator',
     stack: 'Next.js 16 / FastAPI / Gemini 2.5 / Groq Llama 3.3 / PyMuPDF / Docker',
-    client: 'Academic Intelligence',
     year: '2025',
     image: '/02-paper-synthesis.png',
     badge: 'ENTERPRISE RAG',
     githubUrl: 'https://github.com/incheif/PaperScope-AI',
     liveUrl: 'https://paperscope-ai.onrender.com/',
-    summary: 'An enterprise-grade, full-stack Retrieval-Augmented Generation (RAG) platform purpose-built for academic literature synthesis, multi-document cross-examination, and verifiable citation interrogation.',
-    content: 'Architected an academic literature interrogation platform featuring split-screen manuscript synthesis, multi-document cross-examination, and verifiable citation attribution. Implemented hybrid LLM routing between Google Gemini 2.5 and Groq-hosted Llama 3.3 70B with sub-second streaming. Developed an adaptive chunking engine (fine-grained passage, balanced paragraph, coarse context) with PyMuPDF extraction, alongside an interactive citation system with clickable [Page X] chips linking directly to verbatim archival manuscript excerpts.',
+    summary: 'Building low-latency RAG architectures, multi-modal ingestion, and verifiable citation interrogation for academic literature synthesis.',
+    content: 'An independently developed academic research synthesis platform featuring dual-pane split-screen manuscript analysis, multi-document cross-examination, and verifiable citation attribution. Implemented hybrid LLM routing between Google Gemini 2.5 and Groq-hosted Llama 3.3 70B with sub-second streaming. Developed an adaptive chunking engine (fine-grained passage, balanced paragraph, coarse context) with PyMuPDF extraction, alongside an interactive citation system with clickable [Page X] chips linking directly to verbatim archival manuscript excerpts.',
     highlights: [
-      'Split-screen academic synthesis & verifiable verbatim citation attribution',
+      'Split-screen academic synthesis & verifiable citation attribution',
       'Sub-second hybrid LLM routing between Google Gemini 2.5 and Groq Llama 3.3 70B',
       'Adaptive tri-tier semantic chunking engine with PyMuPDF extraction'
     ]
@@ -97,17 +93,17 @@ const PROJECTS_DATA: Project[] = [
     category: 'DEVELOPMENT',
     categories: ['DEVELOPMENT'],
     role: 'Software Engineer',
-    stack: 'Temporal / Python / LLMs / DOM Analysis',
     client: 'KYC Hub (Internal)',
+    stack: 'Temporal / Python / LLMs / DOM Analysis / FastAPI',
     year: '2026',
     image: '/monolith_project.jpg',
     badge: 'AGENTIC INFRA',
-    summary: 'An agentic system automating compliance source onboarding by analyzing DOM structures and dynamically generating schemas.',
-    content: 'Developed an agentic solution to automate the onboarding of global compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings for structured data extraction. Utilized Temporal to manage scalable, distributed activities and execution processes, ensuring high reliability.',
+    summary: 'Architected agentic AI for automating AML-based data source onboarding and data ingestion for maintaining a database of sanctioned, criminal, or politically exposed entities.',
+    content: 'Architected an agentic AI system for automating AML-based data source onboarding and data ingestion to maintain a database for sanctioned, criminal, or politically exposed entities (PEPs). Deployed Temporal for distributed workflow orchestration to guarantee fault-tolerant, scalable execution. Engineered automated DOM extraction and web scraping pipelines that parse complex webpage structures and dynamically generate schema mappings for reliable data extraction.',
     highlights: [
-      'Autonomous DOM structure analysis synthesizing execution plans & schema mappings',
-      'Temporal workflow orchestration managing resilient, fault-tolerant distributed scrapers',
-      'Zero-shot extraction pipeline eliminating manual compliance onboarding overhead'
+      'Automated AML data source onboarding & ingestion for sanctioned, criminal, and PEP entities',
+      'Deployed Temporal for distributed workflow orchestration & fault-tolerant execution',
+      'Automated DOM extraction and web scraping pipelines for complex global sources'
     ]
   },
   {
@@ -115,15 +111,13 @@ const PROJECTS_DATA: Project[] = [
     title: 'CIVICLENS PLATFORM',
     category: 'DEVELOPMENT',
     categories: ['DEVELOPMENT', 'DESIGN'],
-    role: 'Full-Stack Lead Engineer',
     stack: 'React / Next.js / Leaflet / Node.js / PostgreSQL / Geofencing',
-    client: 'Civic Tech Initiative',
     year: '2025',
     image: '/aether_project.jpg',
     badge: 'CIVIC TECH',
     githubUrl: 'https://github.com/incheif/civiclens',
     summary: 'A mobile-first democratic civic engagement platform uniting geospatial issue reporting, geofencing clustering, and transparent citizen prioritization.',
-    content: 'Engineered a full-stack civic engagement system enabling citizens to report infrastructure hazards with automatic coordinate-based geofencing and duplicate cluster aggregation. Features real-time geospatial maps via Leaflet, community voting mechanisms, and administrative triage workflows for municipal agencies.',
+    content: 'An independently engineered civic engagement platform enabling citizens to report infrastructure hazards with coordinate-based geofencing and duplicate cluster aggregation. Features real-time geospatial maps via Leaflet, community voting mechanisms, and administrative triage workflows for municipal agencies.',
     highlights: [
       'Geospatial incident clustering & polygon geofencing logic for city hazard tracking',
       'Democratic community prioritization with real-time voting & transparency tallies',
@@ -136,8 +130,8 @@ const PROJECTS_DATA: Project[] = [
     category: 'DEVELOPMENT',
     categories: ['DEVELOPMENT'],
     role: 'Software Developer Intern',
-    stack: 'YOLOv8 / CNN / PyTorch / OpenCV',
     client: 'Hughes Communication India',
+    stack: 'YOLOv8 / CNN / PyTorch / OpenCV',
     year: '2024',
     image: '/kinetic_project.jpg',
     badge: 'COMPUTER VISION',
@@ -155,8 +149,8 @@ const PROJECTS_DATA: Project[] = [
     category: 'DESIGN',
     categories: ['DESIGN', 'DEVELOPMENT'],
     role: 'Software Developer Intern',
-    stack: 'Elasticsearch / Azure OpenAI / LlamaParse / Tesseract',
     client: 'Shorthills AI',
+    stack: 'Elasticsearch / Azure OpenAI / LlamaParse / Tesseract',
     year: '2025',
     image: '/bauhaus_project.jpg',
     badge: 'SEARCH & RANK',
@@ -245,13 +239,13 @@ function App() {
       {/* STICKY NAVIGATION */}
       <header className="sticky top-0 z-50 bg-white border-b border-black w-full flex items-center justify-between px-6 py-4 md:px-8">
         <a href="#top" className="font-mono text-xs font-bold tracking-widest text-black focus-ring" style={{ textDecoration: 'none' }}>
-          DHRUV GUPTA / AI & ROBOTICS
+          DHRUV GUPTA / AI/ML & SYSTEMS ARCHITECT
         </a>
         
         {/* Desktop Navigation */}
         <nav className="flex items-center gap-2 md:flex md:flex-row md:items-center">
           <span className="md:inline-flex flex items-center gap-2 flex-wrap" style={{ display: 'flex' }}>
-            <a href="#about" className="nav-link focus-ring">01 / Index</a>
+            <a href="#about" className="nav-link focus-ring">01 / Focus</a>
             <a href="#projects" className="nav-link focus-ring">02 / Works</a>
             <a href="#experience" className="nav-link focus-ring">03 / Timeline</a>
             <a href="#contact" className="nav-link focus-ring">04 / CTA</a>
@@ -290,7 +284,7 @@ function App() {
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
-              01 / ABOUT
+              01 / FOCUS
             </a>
             <a 
               href="#projects" 
@@ -342,8 +336,8 @@ function App() {
           <div className="absolute inset-0 texture-grid opacity-5 pointer-events-none"></div>
           
           <div className="container relative z-10 w-full flex flex-col items-start text-left">
-            <span className="font-mono text-xs tracking-widest text-neutral-500 uppercase mb-4 block">
-              EMBODIED AI, ROBOTICS & INTELLIGENT SYSTEMS
+            <span className="font-mono text-xs tracking-widest text-neutral-500 uppercase mb-4 block font-semibold">
+              AI/ML ENGINEER & SYSTEMS ARCHITECT · DELHI TECHNOLOGICAL UNIVERSITY (DTU)
             </span>
             <h1 className="text-9xl uppercase font-bold tracking-tighter leading-none mb-6">
               DHRUV<br />
@@ -366,8 +360,8 @@ function App() {
               </div>
             </div>
 
-            <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '48rem', lineHeight: '1.3' }}>
-              I'm Dhruv Gupta, an AI/ML Engineer and Software Engineer focused on building intelligent systems that connect software with the physical world.
+            <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '52rem', lineHeight: '1.3' }}>
+              I'm Dhruv Gupta, an AI/ML Engineer & Systems Architect from Delhi Technological University (DTU). I design agentic AI workflows that self-plan, validate, and execute complex operations, while connecting machine intelligence to the physical world through robotics and spatial AI.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -390,9 +384,9 @@ function App() {
               </div>
 
               <div className="flex flex-wrap gap-x-12 gap-y-4 font-mono text-xs text-muted py-2 border-t border-black w-full justify-between mt-8">
-                <span>[ LATITUDE : 28.6139° N ]</span>
-                <span>[ STACK : PYTHON / ROS 2 / C++ / TYPESCRIPT ]</span>
-                <span>[ FOCUS : PHYSICAL AI & INTELLIGENT SYSTEMS ]</span>
+                <span>[ ALMA MATER : DELHI TECHNOLOGICAL UNIVERSITY (DTU) ]</span>
+                <span>[ FOCUS : AGENTIC SYSTEMS, PHYSICAL AI & ROBOTICS ]</span>
+                <span>[ STACK : PYTHON / ROS 2 / TEMPORAL / FASTAPI / DOCKER ]</span>
               </div>
             </div>
           </div>
@@ -401,25 +395,50 @@ function App() {
         {/* HEAVY SECTION DIVIDER */}
         <hr className="hr-thick" />
 
-        {/* ABOUT SECTION */}
+        {/* ABOUT / CAPABILITIES SECTION */}
         <section id="about" className="section-padding bg-white relative">
           <div className="container">
             <div className="grid grid-cols-12 gap-12 lg:grid-cols-2 md:grid-cols-1 md:gap-8">
               <div className="col-span-4 lg:col-span-12">
                 <span className="font-mono text-xs tracking-widest text-muted block mb-4 uppercase">
-                  01 / PHILOSOPHY
+                  01 / CAPABILITIES & FOCUS
                 </span>
                 <h2 className="text-5xl font-bold tracking-tight uppercase leading-none text-black">
-                  THE MECHANICS<br />OF COGNITION.
+                  SYSTEMS<br />ARCHITECTURE.
                 </h2>
               </div>
               <div className="col-span-8 lg:col-span-12 flex flex-col gap-6">
                 <p className="text-xl text-black drop-cap-box leading-relaxed font-normal">
-                  I believe software achieves its highest leverage when it interfaces directly with the physical world. As an AI/ML and Software Engineer, my work centers on designing intelligent systems that bridge high-level multimodal cognition with physical actuators, real-time spatial memory, and robust distributed execution pipelines.
+                  I specialize in architecting production AI systems where models are grounded in deterministic execution logic. My engineering discipline spans designing agentic workflows that self-plan and validate complex tasks, building low-latency retrieval pipelines, and connecting machine intelligence to the physical world through robotics and spatial computing.
                 </p>
-                <p className="text-lg text-muted leading-relaxed">
-                  From architecting <strong>AERO</strong>—an embodied robotic manipulation studio pairing Google Gemini VLA reasoning with 60 FPS physics and ROS 2—to developing <strong>PaperScope AI</strong> for verifiable academic RAG literature synthesis, to deploying agentic DOM extraction workflows with Temporal at KYC Hub, I build computational architectures that are resilient, mathematically grounded, and rigorously performant.
-                </p>
+
+                {/* 4 Core Pillars Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-4 mt-2">
+                  <div className="capability-card">
+                    <span className="capability-title">01 / AGENTIC WORKFLOWS</span>
+                    <p className="capability-desc">
+                      Designing agentic AI workflows that self-plan, validate, and execute complex operations.
+                    </p>
+                  </div>
+                  <div className="capability-card">
+                    <span className="capability-title">02 / PHYSICAL AI & ROBOTICS</span>
+                    <p className="capability-desc">
+                      Connecting machine intelligence to the physical world through robotics and spatial AI.
+                    </p>
+                  </div>
+                  <div className="capability-card">
+                    <span className="capability-title">03 / LOW-LATENCY RAG</span>
+                    <p className="capability-desc">
+                      Building low-latency RAG architectures, multi-modal ingestion, and neural search engines.
+                    </p>
+                  </div>
+                  <div className="capability-card">
+                    <span className="capability-title">04 / DISTRIBUTED BACKENDS</span>
+                    <p className="capability-desc">
+                      Engineering fault-tolerant distributed backends with Temporal, FastAPI, and Docker.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -443,17 +462,17 @@ function App() {
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 02 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">06+</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">AI & ROBOTIC SYSTEMS</div>
+                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">SHIPPED ARCHITECTURES & SYSTEMS</div>
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 03 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">60 FPS</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">REAL-TIME PHYSICS KINEMATICS</div>
+                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">REAL-TIME KINEMATICS SIMULATION</div>
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 04 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">08+</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">FRAMEWORKS & CLOUD PLATS</div>
+                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">DEV TOOLS, ROBOTICS & CLOUD PLATS</div>
               </div>
             </div>
           </div>
@@ -500,7 +519,7 @@ function App() {
                   key={project.id} 
                   className="project-placard text-left"
                 >
-                  {/* Top Placard Badge Bar */}
+                  {/* Top Placard Badge Bar: Clean Specimen Index & Category (NO repeated links) */}
                   <div className="placard-badge-bar">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-xs font-bold text-neutral-500 tracking-wider">
@@ -516,17 +535,9 @@ function App() {
                       )}
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      {project.liveUrl && (
-                        <span className="font-mono text-xs text-black font-bold flex items-center gap-1.5 bg-neutral-100 px-2 py-0.5 border border-neutral-300">
-                          <span className="live-pulse" />
-                          <span>LIVE</span>
-                        </span>
-                      )}
-                      <span className="font-mono text-xs text-muted tracking-widest font-semibold">
-                        {project.category}
-                      </span>
-                    </div>
+                    <span className="font-mono text-xs text-muted tracking-widest font-semibold uppercase">
+                      {project.category}
+                    </span>
                   </div>
 
                   {/* Specimen Frame (Single Image) */}
@@ -575,7 +586,7 @@ function App() {
                     </div>
                   )}
 
-                  {/* Placard Footer Action Row */}
+                  {/* Placard Footer Action Row: All outbound links are located here at the bottom */}
                   <div className="placard-footer">
                     <button 
                       className="placard-action-btn"
@@ -594,7 +605,7 @@ function App() {
                           title="Open Live Deployment"
                         >
                           <Globe size={11} />
-                          <span>Demo</span>
+                          <span>Live Demo</span>
                           <ExternalLink size={10} />
                         </a>
                       )}
@@ -607,7 +618,7 @@ function App() {
                           title="View GitHub Repository"
                         >
                           <GithubIcon size={12} />
-                          <span>Code</span>
+                          <span>GitHub ↗</span>
                         </a>
                       )}
                     </div>
@@ -793,7 +804,7 @@ function App() {
           <div className="flex flex-row justify-between items-center md:flex-col md:gap-6 md:items-start text-left">
             <div>
               <span className="font-mono text-xs font-bold tracking-widest block uppercase mb-1">
-                DHRUV GUPTA / EMBODIED AI & ROBOTICS
+                DHRUV GUPTA / AI/ML & SYSTEMS ARCHITECT
               </span>
               <p className="font-mono text-xs text-muted">
                 COMPILED VIA VITE / REACT / TS / VANILLA CSS. ALL SYSTEM SHARP.
@@ -898,14 +909,30 @@ function App() {
                 
                 {/* Left Column: Metadata */}
                 <div className="col-span-4 md:col-span-12 flex flex-col gap-4 font-mono text-xs border-r border-neutral-200 md:border-r-0 md:border-b md:pb-6 pr-4">
-                  <div>
-                    <span className="text-muted uppercase block">ROLE</span>
-                    <span className="text-black font-semibold uppercase">{selectedProject.role}</span>
-                  </div>
-                  <div>
-                    <span className="text-muted uppercase block">ORGANIZATION / CONTEXT</span>
-                    <span className="text-black font-semibold uppercase">{selectedProject.client}</span>
-                  </div>
+                  {/* Conditionally render Role only if present */}
+                  {selectedProject.role && (
+                    <div>
+                      <span className="text-muted uppercase block">ROLE</span>
+                      <span className="text-black font-semibold uppercase">{selectedProject.role}</span>
+                    </div>
+                  )}
+
+                  {/* Conditionally render Organization only if present */}
+                  {selectedProject.client && (
+                    <div>
+                      <span className="text-muted uppercase block">ORGANIZATION</span>
+                      <span className="text-black font-semibold uppercase">{selectedProject.client}</span>
+                    </div>
+                  )}
+
+                  {/* For independent architectures (no role, no client) */}
+                  {!selectedProject.role && !selectedProject.client && (
+                    <div>
+                      <span className="text-muted uppercase block">DEVELOPMENT MODEL</span>
+                      <span className="text-black font-semibold uppercase">Independent Architecture</span>
+                    </div>
+                  )}
+
                   <div>
                     <span className="text-muted uppercase block">CHRONOLOGY</span>
                     <span className="text-black font-semibold">{selectedProject.year}</span>
