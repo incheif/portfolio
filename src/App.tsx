@@ -51,6 +51,7 @@ interface Project {
   liveUrl?: string;
   badge?: string;
   screenshots?: ScreenshotItem[];
+  highlights?: string[];
 }
 
 const PROJECTS_DATA: Project[] = [
@@ -69,6 +70,11 @@ const PROJECTS_DATA: Project[] = [
     liveUrl: 'https://aero-studio.onrender.com/',
     summary: 'An end-to-end cognitive robotic manipulation platform combining Vision-Language-Action (VLA) multimodal reasoning, 3D tabletop spatial semantic mapping, 60 FPS physics kinematics, and an interactive Three.js WebGL studio.',
     content: 'AERO (Agentic Execution for Robotic Operations) bridges high-level multimodal reasoning with physical robotic execution. The platform translates natural-language commands into verified tabletop manipulation primitives using Google Gemini VLA models, persistent 3D spatial semantic memory, and active frontier exploration. Closed-loop Cartesian trajectory planning and geometric inverse kinematics execute against 60 FPS Rapier3D rigid-body dynamics, streaming continuous telemetry via WebSockets to a Three.js 3D WebGL digital twin studio and publishing to native ROS 2 topic bridges.',
+    highlights: [
+      'Google Gemini VLA multimodal reasoning & 3D tabletop spatial semantic mapping',
+      '60 FPS Rapier3D rigid-body kinematics with closed-loop Cartesian trajectory planning',
+      'Interactive Three.js 3D WebGL digital twin studio with native ROS 2 topic bridges'
+    ],
     screenshots: [
       { src: '/aero_studio_tower.png', label: '3D WebGL Studio & Multi-Layer Tower Assembly' },
       { src: '/demo_aero_manipulation.webp', label: '60 FPS Live Kinematic Manipulation Demo' },
@@ -90,6 +96,11 @@ const PROJECTS_DATA: Project[] = [
     liveUrl: 'https://paperscope-ai.onrender.com/',
     summary: 'An enterprise-grade, full-stack Retrieval-Augmented Generation (RAG) platform purpose-built for academic literature synthesis, multi-document cross-examination, and verifiable citation interrogation.',
     content: 'Architected an academic literature interrogation platform featuring split-screen manuscript synthesis, multi-document cross-examination, and verifiable citation attribution. Implemented hybrid LLM routing between Google Gemini 2.5 and Groq-hosted Llama 3.3 70B with sub-second streaming. Developed an adaptive chunking engine (fine-grained passage, balanced paragraph, coarse context) with PyMuPDF extraction, alongside an interactive citation system with clickable [Page X] chips linking directly to verbatim archival manuscript excerpts.',
+    highlights: [
+      'Split-screen academic synthesis & verifiable verbatim citation attribution',
+      'Sub-second hybrid LLM routing between Google Gemini 2.5 and Groq Llama 3.3 70B',
+      'Adaptive tri-tier semantic chunking engine with PyMuPDF extraction'
+    ],
     screenshots: [
       { src: '/02-paper-synthesis.png', label: 'Split-Screen Academic Synthesis & Structured Monograph' },
       { src: '/03-chat-interrogation.png', label: 'Conversational RAG Interrogation & Verified Citations' },
@@ -109,8 +120,36 @@ const PROJECTS_DATA: Project[] = [
     badge: 'AGENTIC INFRA',
     summary: 'An agentic system automating compliance source onboarding by analyzing DOM structures and dynamically generating schemas.',
     content: 'Developed an agentic solution to automate the onboarding of global compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings for structured data extraction. Utilized Temporal to manage scalable, distributed activities and execution processes, ensuring high reliability.',
+    highlights: [
+      'Autonomous DOM structure analysis synthesizing execution plans & schema mappings',
+      'Temporal workflow orchestration managing resilient, fault-tolerant distributed scrapers',
+      'Zero-shot extraction pipeline eliminating manual compliance onboarding overhead'
+    ],
     screenshots: [
       { src: '/monolith_project.jpg', label: 'Distributed Schema & Execution State Topology' }
+    ]
+  },
+  {
+    id: 'civiclens',
+    title: 'CIVICLENS PLATFORM',
+    category: 'DEVELOPMENT',
+    categories: ['DEVELOPMENT', 'DESIGN'],
+    role: 'Full-Stack Lead Engineer',
+    stack: 'React / Next.js / Leaflet / Node.js / PostgreSQL / Geofencing',
+    client: 'Civic Tech Initiative',
+    year: '2025',
+    image: '/aether_project.jpg',
+    badge: 'CIVIC TECH',
+    githubUrl: 'https://github.com/incheif/civiclens',
+    summary: 'A mobile-first democratic civic engagement platform uniting geospatial issue reporting, geofencing clustering, and transparent citizen prioritization.',
+    content: 'Engineered a full-stack civic engagement system enabling citizens to report infrastructure hazards with automatic coordinate-based geofencing and duplicate cluster aggregation. Features real-time geospatial maps via Leaflet, community voting mechanisms, and administrative triage workflows for municipal agencies.',
+    highlights: [
+      'Geospatial incident clustering & polygon geofencing logic for city hazard tracking',
+      'Democratic community prioritization with real-time voting & transparency tallies',
+      'Interactive mapping UI with Leaflet, OpenStreetMap, and responsive mobile architecture'
+    ],
+    screenshots: [
+      { src: '/aether_project.jpg', label: 'Geospatial Civic Hazard Clustering & Community Triage' }
     ]
   },
   {
@@ -126,6 +165,11 @@ const PROJECTS_DATA: Project[] = [
     badge: 'COMPUTER VISION',
     summary: 'A deep learning computer vision model verifying correct satellite dish antenna placement from field imagery.',
     content: 'Developed a deep learning solution using CNN and YOLOv8 to detect and verify correct dish antenna installation from field photographs. Automated the quality sign-off pipeline through image-based analysis, reducing manual inspection time and improving operational efficiency.',
+    highlights: [
+      'Deep learning CNN & YOLOv8 models verifying antenna alignment and placement',
+      'Automated quality sign-off pipeline reducing field inspection turnaround',
+      'Real-time edge image inference with OpenCV and PyTorch'
+    ],
     screenshots: [
       { src: '/kinetic_project.jpg', label: 'Computer Vision Antenna Detection Pipeline' }
     ]
@@ -143,6 +187,11 @@ const PROJECTS_DATA: Project[] = [
     badge: 'SEARCH & RANK',
     summary: 'AI recruiting matching system parsing multi-format CVs and ranking candidates using semantic embeddings.',
     content: 'Built an AI-driven candidate matching dashboard. Developed robust resume parsing pipelines using LlamaParse and Tesseract OCR, converting PDF/Docx documents to clean text. Computed semantic similarities using OpenAI text-embeddings, and indexed profiles with Elasticsearch for high-accuracy match ranking.',
+    highlights: [
+      'Candidate-job semantic matching & ranking using Elasticsearch and Azure OpenAI',
+      'Heterogeneous resume ingestion pipeline via LlamaParse and Tesseract OCR',
+      'High-throughput vector search using OpenAI text embeddings'
+    ],
     screenshots: [
       { src: '/bauhaus_project.jpg', label: 'Semantic Matching & Candidate Indexing Dashboard' }
     ]
@@ -516,7 +565,7 @@ function App() {
                     )}
                   </div>
 
-                  <div className="flex justify-between items-baseline mb-4 py-2 border-b border-neutral-200">
+                  <div className="flex justify-between items-baseline mb-3 py-2 border-b border-neutral-200">
                     <h3 className="text-3xl font-bold tracking-tight text-black">
                       {project.title}
                     </h3>
@@ -525,9 +574,33 @@ function App() {
                     </span>
                   </div>
 
-                  <p className="text-base text-muted mb-6 leading-relaxed flex-1">
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {project.stack.split(' / ').map((tech, i) => (
+                      <span 
+                        key={i} 
+                        className="font-mono text-[10px] uppercase tracking-wider bg-neutral-100 border border-neutral-300 px-2 py-0.5 text-neutral-800 font-semibold"
+                      >
+                        {tech.trim()}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="text-sm text-neutral-700 mb-4 leading-relaxed">
                     {project.summary}
                   </p>
+
+                  {/* Architectural Specifications / Highlights */}
+                  {project.highlights && project.highlights.length > 0 && (
+                    <div className="mb-5 space-y-1.5 border-l-2 border-black pl-3 py-1 bg-neutral-50 flex-1">
+                      {project.highlights.map((h, i) => (
+                        <div key={i} className="text-xs text-neutral-600 flex items-start gap-1.5 leading-snug">
+                          <span className="text-black font-bold text-[10px] mt-0.5">▪</span>
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Card Action Row */}
                   <div className="flex items-center justify-between pt-2 border-t border-neutral-200">
@@ -572,47 +645,54 @@ function App() {
         {/* HEAVY SECTION DIVIDER */}
         <hr className="hr-thick" />
 
-        {/* TIMELINE / EXPERIENCE SECTION */}
-        <section id="experience" className="section-padding bg-muted relative">
+        {/* TIMELINE / EXPERIENCE SECTION (COMPACT EDITORIAL DESIGN) */}
+        <section id="experience" className="py-12 md:py-8 bg-muted relative border-y border-neutral-300">
           {/* Subtle Diagonal Lines Texture */}
           <div className="absolute inset-0 texture-diagonal opacity-5 pointer-events-none"></div>
 
           <div className="container relative z-10">
-            <div className="grid grid-cols-12 gap-12 lg:grid-cols-2 md:grid-cols-1 md:gap-8">
-              <div className="col-span-4 lg:col-span-12">
-                <span className="font-mono text-xs tracking-widest text-muted block mb-4 uppercase">
+            <div className="flex justify-between items-end md:flex-col md:items-start md:gap-2 mb-8">
+              <div>
+                <span className="font-mono text-xs tracking-widest text-muted block mb-1 uppercase">
                   03 / TIMELINE
                 </span>
-                <h2 className="text-5xl font-bold uppercase tracking-tight leading-none text-black">
-                  CHRONICLES OF<br />EXPERIENCE
+                <h2 className="text-3xl md:text-2xl font-bold uppercase tracking-tight leading-none text-black">
+                  CHRONICLES OF EXPERIENCE
                 </h2>
               </div>
-              <div className="col-span-8 lg:col-span-12 flex flex-col">
-                <div className="border-l-2 border-black pl-8 md:pl-4 flex flex-col gap-12">
-                  {EXPERIENCE_DATA.map((exp, idx) => (
-                    <div key={idx} className="relative flex flex-col items-start text-left">
-                      {/* Timeline dot */}
-                      <div 
-                        className="absolute bg-black border-2 border-black w-4 h-4"
-                        style={{ left: '-41px', top: '4px', transform: 'translateX(-50%)' }}
-                      />
-                      
-                      <span className="font-mono text-xs tracking-widest text-muted block mb-2 font-semibold">
+              <span className="font-mono text-xs text-neutral-500 uppercase tracking-widest font-semibold">
+                3 STAGES • 2024 — PRESENT
+              </span>
+            </div>
+
+            {/* Compact 3-Column Grid */}
+            <div className="grid grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-6">
+              {EXPERIENCE_DATA.map((exp, idx) => (
+                <div 
+                  key={idx} 
+                  className="bg-white border-2 border-black p-5 flex flex-col justify-between text-left shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-transform"
+                >
+                  <div>
+                    <div className="flex justify-between items-center mb-2.5 pb-2 border-b border-neutral-200">
+                      <span className="font-mono text-[11px] font-bold text-neutral-600 tracking-wider">
                         {exp.period}
                       </span>
-                      <h3 className="text-2xl font-bold text-black uppercase tracking-tight mb-1">
-                        {exp.company}
-                      </h3>
-                      <span className="font-mono text-xs text-black uppercase font-medium tracking-wide mb-4">
-                        {exp.role}
+                      <span className="font-mono text-[10px] bg-black text-white px-2 py-0.5 font-bold">
+                        0{idx + 1}
                       </span>
-                      <p className="text-base text-muted leading-relaxed">
-                        {exp.description}
-                      </p>
                     </div>
-                  ))}
+                    <h3 className="text-xl font-bold text-black uppercase tracking-tight mb-1">
+                      {exp.company}
+                    </h3>
+                    <span className="font-mono text-xs text-neutral-700 block mb-3 font-semibold">
+                      {exp.role}
+                    </span>
+                    <p className="text-xs text-neutral-600 leading-relaxed">
+                      {exp.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -924,6 +1004,20 @@ function App() {
                   <p className="text-base text-muted leading-relaxed">
                     By focusing on flat layout designs, heavy rules, and structured lines, we ensured that the work does not distract with transient decorations. The result is a highly functional, visual system built on pure grid theory.
                   </p>
+
+                  {/* Modal Highlights Specification List */}
+                  {selectedProject.highlights && selectedProject.highlights.length > 0 && (
+                    <div className="border border-neutral-300 p-4 bg-neutral-50 text-left">
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider block mb-2 text-black">
+                        Key Architectural Specifications:
+                      </span>
+                      <ul className="space-y-1.5 pl-4 list-disc text-xs text-neutral-700">
+                        {selectedProject.highlights.map((h, i) => (
+                          <li key={i}>{h}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <div className="mt-4 flex gap-4 flex-wrap">
                     {selectedProject.liveUrl && (
                       <a 
