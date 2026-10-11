@@ -482,3 +482,27 @@ body::before {
     padding: 1rem !important;
   }
 }
+
+/* Image & Media Utilities */
+.object-cover { object-fit: cover; }
+.object-contain { object-fit: contain; }
+.aspect-\[3\/2\] { aspect-ratio: 3 / 2; }
+.aspect-\[16\/9\] { aspect-ratio: 16 / 9; }
+.overflow-x-auto { overflow-x: auto; }
+.cursor-pointer { cursor: pointer; }
+.border-2 { border-width: 2px; }
+.border { border-width: 1px; }
+.border-b-2 { border-bottom-width: 2px; }
+.border-neutral-200 { border-color: #e5e5e5; }
+.border-neutral-300 { border-color: #d4d4d4; }
+.border-black { border-color: #000000; }
+.hover\:underline:hover { text-decoration: underline; }
+.live-pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50% !important;
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3) !important;
+}
+

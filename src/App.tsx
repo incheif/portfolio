@@ -5,15 +5,41 @@ import {
   X, 
   ArrowUp, 
   Check, 
-  Mail 
+  Mail,
+  ExternalLink,
+  Globe
 } from 'lucide-react';
 import { Button } from './components/Button';
 import { TextField } from './components/TextField';
+
+// Clean SVG Github icon
+const GithubIcon: React.FC<{ size?: number; className?: string }> = ({ size = 16, className = '' }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2.2 6-7.5a5.6 5.6 0 0 0-1.3-3.8 5 5 0 0 0-.1-3.8s-.9-.3-3 1a17.9 17.9 0 0 0-9 0c-2.1-1.3-3-1-3-1a5 5 0 0 0-.1 3.8 5.6 5.6 0 0 0-1.3 3.8c0 5.3 3 7.5 6 7.5a4.8 4.8 0 0 0-1 3.5v4" />
+  </svg>
+);
+
+interface ScreenshotItem {
+  src: string;
+  label: string;
+}
 
 interface Project {
   id: string;
   title: string;
   category: 'DEVELOPMENT' | 'DESIGN';
+  categories?: ('DEVELOPMENT' | 'DESIGN')[];
   role: string;
   stack: string;
   client: string;
@@ -21,56 +47,105 @@ interface Project {
   image: string;
   summary: string;
   content: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  badge?: string;
+  screenshots?: ScreenshotItem[];
 }
 
 const PROJECTS_DATA: Project[] = [
   {
+    id: 'aero',
+    title: 'AERO: AGENTIC ROBOTIC OPERATIONS',
+    category: 'DEVELOPMENT',
+    categories: ['DEVELOPMENT'],
+    role: 'Robotics & AI Architect',
+    stack: 'ROS 2 / Google Gemini VLA / Three.js WebGL / Rapier3D / Python / FastAPI',
+    client: 'Autonomous Robotics Lab',
+    year: '2026',
+    image: '/aero_studio_tower.png',
+    badge: 'PHYSICAL AI',
+    githubUrl: 'https://github.com/incheif/Aero',
+    liveUrl: 'https://aero-studio.onrender.com/',
+    summary: 'An end-to-end cognitive robotic manipulation platform combining Vision-Language-Action (VLA) multimodal reasoning, 3D tabletop spatial semantic mapping, 60 FPS physics kinematics, and an interactive Three.js WebGL studio.',
+    content: 'AERO (Agentic Execution for Robotic Operations) bridges high-level multimodal reasoning with physical robotic execution. The platform translates natural-language commands into verified tabletop manipulation primitives using Google Gemini VLA models, persistent 3D spatial semantic memory, and active frontier exploration. Closed-loop Cartesian trajectory planning and geometric inverse kinematics execute against 60 FPS Rapier3D rigid-body dynamics, streaming continuous telemetry via WebSockets to a Three.js 3D WebGL digital twin studio and publishing to native ROS 2 topic bridges.',
+    screenshots: [
+      { src: '/aero_studio_tower.png', label: '3D WebGL Studio & Multi-Layer Tower Assembly' },
+      { src: '/demo_aero_manipulation.webp', label: '60 FPS Live Kinematic Manipulation Demo' },
+      { src: '/aero_execution_logs.png', label: 'Real-Time Telemetry & IK Execution Stream' }
+    ]
+  },
+  {
+    id: 'paperscope-ai',
+    title: 'PAPERSCOPE_AI',
+    category: 'DESIGN',
+    categories: ['DEVELOPMENT', 'DESIGN'],
+    role: 'Full-Stack AI Engineer & Creator',
+    stack: 'Next.js 16 / FastAPI / Gemini 2.5 / Groq Llama 3.3 / PyMuPDF / Docker',
+    client: 'Academic Intelligence',
+    year: '2025',
+    image: '/02-paper-synthesis.png',
+    badge: 'ENTERPRISE RAG',
+    githubUrl: 'https://github.com/incheif/PaperScope-AI',
+    liveUrl: 'https://paperscope-ai.onrender.com/',
+    summary: 'An enterprise-grade, full-stack Retrieval-Augmented Generation (RAG) platform purpose-built for academic literature synthesis, multi-document cross-examination, and verifiable citation interrogation.',
+    content: 'Architected an academic literature interrogation platform featuring split-screen manuscript synthesis, multi-document cross-examination, and verifiable citation attribution. Implemented hybrid LLM routing between Google Gemini 2.5 and Groq-hosted Llama 3.3 70B with sub-second streaming. Developed an adaptive chunking engine (fine-grained passage, balanced paragraph, coarse context) with PyMuPDF extraction, alongside an interactive citation system with clickable [Page X] chips linking directly to verbatim archival manuscript excerpts.',
+    screenshots: [
+      { src: '/02-paper-synthesis.png', label: 'Split-Screen Academic Synthesis & Structured Monograph' },
+      { src: '/03-chat-interrogation.png', label: 'Conversational RAG Interrogation & Verified Citations' },
+      { src: '/01-landing-workspace.png', label: 'Multi-Document Ingestion & Semantic Chunking Profiles' }
+    ]
+  },
+  {
     id: 'agentic-compliance',
     title: 'AGENTIC COMPLIANCE SYSTEM',
     category: 'DEVELOPMENT',
+    categories: ['DEVELOPMENT'],
     role: 'Software Engineer',
     stack: 'Temporal / Python / LLMs / DOM Analysis',
     client: 'KYC Hub (Internal)',
     year: '2026',
     image: '/monolith_project.jpg',
+    badge: 'AGENTIC INFRA',
     summary: 'An agentic system automating compliance source onboarding by analyzing DOM structures and dynamically generating schemas.',
-    content: 'Developed an agentic solution to automate the onboarding of global compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings for structured data extraction. Utilized Temporal to manage scalable, distributed activities and execution processes, ensuring high reliability.'
-  },
-  {
-    id: 'research-paper-analyser',
-    title: 'RESEARCH PAPER ANALYSER',
-    category: 'DESIGN',
-    role: 'Creator & Developer',
-    stack: 'LangChain / Groq / Gemini / FAISS Vector Embeddings',
-    client: 'Personal Project',
-    year: '2025',
-    image: '/aether_project.jpg',
-    summary: 'A Live RAG system enabling intelligent querying of complex research papers with multi-modal parsing capabilities.',
-    content: 'Engineered a Live RAG system using LangChain and Groq to enable intelligent querying of complex research papers, achieving high-speed inference with optimized latency. Implemented advanced semantic retrieval pipelines using Google Gemini and FAISS vector embeddings, allowing for context-aware document analysis and accurate information extraction. Designed a modular architecture to handle multi-modal input processing for diagrams and mathematical notation.'
+    content: 'Developed an agentic solution to automate the onboarding of global compliance sources. The system autonomously analyzes DOM structures to generate execution plans, validation logic, and schema mappings for structured data extraction. Utilized Temporal to manage scalable, distributed activities and execution processes, ensuring high reliability.',
+    screenshots: [
+      { src: '/monolith_project.jpg', label: 'Distributed Schema & Execution State Topology' }
+    ]
   },
   {
     id: 'automated-quality',
     title: 'AUTOMATED QUALITY SIGN-OFF',
     category: 'DEVELOPMENT',
+    categories: ['DEVELOPMENT'],
     role: 'Software Developer Intern',
     stack: 'YOLOv8 / CNN / PyTorch / OpenCV',
     client: 'Hughes Communication India',
     year: '2024',
     image: '/kinetic_project.jpg',
+    badge: 'COMPUTER VISION',
     summary: 'A deep learning computer vision model verifying correct satellite dish antenna placement from field imagery.',
-    content: 'Developed a deep learning solution using CNN and YOLOv8 to detect and verify correct dish antenna installation from field photographs. Automated the quality sign-off pipeline through image-based analysis, reducing manual inspection time and improving operational efficiency.'
+    content: 'Developed a deep learning solution using CNN and YOLOv8 to detect and verify correct dish antenna installation from field photographs. Automated the quality sign-off pipeline through image-based analysis, reducing manual inspection time and improving operational efficiency.',
+    screenshots: [
+      { src: '/kinetic_project.jpg', label: 'Computer Vision Antenna Detection Pipeline' }
+    ]
   },
   {
     id: 'candidate-matching',
     title: 'AI CANDIDATE MATCHING',
     category: 'DESIGN',
+    categories: ['DESIGN', 'DEVELOPMENT'],
     role: 'Software Developer Intern',
     stack: 'Elasticsearch / Azure OpenAI / LlamaParse / Tesseract',
     client: 'Shorthills AI',
     year: '2025',
     image: '/bauhaus_project.jpg',
+    badge: 'SEARCH & RANK',
     summary: 'AI recruiting matching system parsing multi-format CVs and ranking candidates using semantic embeddings.',
-    content: 'Built an AI-driven candidate matching dashboard. Developed robust resume parsing pipelines using LlamaParse and Tesseract OCR, converting PDF/Docx documents to clean text. Computed semantic similarities using OpenAI text-embeddings, and indexed profiles with Elasticsearch for high-accuracy match ranking.'
+    content: 'Built an AI-driven candidate matching dashboard. Developed robust resume parsing pipelines using LlamaParse and Tesseract OCR, converting PDF/Docx documents to clean text. Computed semantic similarities using OpenAI text-embeddings, and indexed profiles with Elasticsearch for high-accuracy match ranking.',
+    screenshots: [
+      { src: '/bauhaus_project.jpg', label: 'Semantic Matching & Candidate Indexing Dashboard' }
+    ]
   }
 ];
 
@@ -98,6 +173,7 @@ const EXPERIENCE_DATA = [
 function App() {
   const [activeCategory, setActiveCategory] = useState<'ALL' | 'DEVELOPMENT' | 'DESIGN'>('ALL');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeModalImage, setActiveModalImage] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -105,15 +181,22 @@ function App() {
   // Close modal on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedProject(null);
+      if (e.key === 'Escape') {
+        setSelectedProject(null);
+        setActiveModalImage(null);
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const openProjectModal = (project: Project) => {
+    setSelectedProject(project);
+    setActiveModalImage(project.image);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-    // Map id to state keys
     const key = id.includes('name') ? 'name' : id.includes('email') ? 'email' : 'message';
     setFormState(prev => ({ ...prev, [key]: value }));
   };
@@ -122,7 +205,6 @@ function App() {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
     
-    // Simulate submission
     setFormSubmitted(true);
     setTimeout(() => {
       setFormState({ name: '', email: '', message: '' });
@@ -130,9 +212,11 @@ function App() {
     }, 4000);
   };
 
-  const filteredProjects = PROJECTS_DATA.filter(
-    p => activeCategory === 'ALL' || p.category === activeCategory
-  );
+  const filteredProjects = PROJECTS_DATA.filter(p => {
+    if (activeCategory === 'ALL') return true;
+    if (p.categories) return p.categories.includes(activeCategory);
+    return p.category === activeCategory;
+  });
 
   return (
     <>
@@ -147,12 +231,11 @@ function App() {
       {/* STICKY NAVIGATION */}
       <header className="sticky top-0 z-50 bg-white border-b border-black w-full flex items-center justify-between px-6 py-4 md:px-8">
         <a href="#top" className="font-mono text-xs font-bold tracking-widest text-black focus-ring" style={{ textDecoration: 'none' }}>
-          DHRUV GUPTA / ENGINEER
+          DHRUV GUPTA / AI & ROBOTICS
         </a>
         
         {/* Desktop Navigation */}
         <nav className="flex items-center gap-2 md:flex md:flex-row md:items-center">
-          <div className="flex md:flex-row flex-row gap-2" style={{ display: 'none' }}></div>
           <span className="md:inline-flex flex items-center gap-2 flex-wrap" style={{ display: 'flex' }}>
             <a href="#about" className="nav-link focus-ring">01 / Index</a>
             <a href="#projects" className="nav-link focus-ring">02 / Works</a>
@@ -167,19 +250,19 @@ function App() {
           onClick={() => setMenuOpen(true)}
           className="md:hidden flex items-center justify-center p-2 focus-ring text-black bg-transparent border-none cursor-pointer"
           aria-label="Open Navigation Menu"
-          style={{ display: 'none' }} /* Hidden as navigation collapses inline or wraps cleanly */
+          style={{ display: 'none' }}
         >
           <Menu size={24} strokeWidth={1.5} />
         </button>
       </header>
 
-      {/* MOBILE NAV OVERLAY (Clean backup for mobile breakpoints) */}
+      {/* MOBILE NAV OVERLAY */}
       {menuOpen && (
         <div className="fixed inset-0 z-100 bg-white flex flex-col p-8">
           <div className="flex justify-between items-center mb-12">
             <span className="font-mono text-xs font-bold tracking-widest uppercase">MENU</span>
             <button 
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setMenuOpen(false)} 
               className="p-2 border-none bg-transparent cursor-pointer text-black focus-ring"
               aria-label="Close Navigation Menu"
             >
@@ -246,7 +329,7 @@ function App() {
           
           <div className="container relative z-10 w-full flex flex-col items-start text-left">
             <span className="font-mono text-xs tracking-widest text-neutral-500 uppercase mb-4 block">
-              COGNITIVE ARCHITECTURES & DECISION TREES
+              EMBODIED AI, ROBOTICS & INTELLIGENT SYSTEMS
             </span>
             <h1 className="text-9xl uppercase font-bold tracking-tighter leading-none mb-6">
               DHRUV<br />
@@ -269,8 +352,8 @@ function App() {
               </div>
             </div>
 
-            <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '44rem', lineHeight: '1.25' }}>
-              AI/ML Engineer and Software Engineer building cognitive decision trees with mathematical structure. Currently diving into robotics engineering.
+            <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '48rem', lineHeight: '1.3' }}>
+              I'm Dhruv Gupta, an AI/ML Engineer and Software Engineer focused on building intelligent systems that connect software with the physical world.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -279,7 +362,7 @@ function App() {
                   const el = document.getElementById('projects');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}>
-                  View Catalog
+                  View Works Catalog
                 </Button>
                 <Button variant="secondary" onClick={() => {
                   const el = document.getElementById('contact');
@@ -294,8 +377,8 @@ function App() {
 
               <div className="flex flex-wrap gap-x-12 gap-y-4 font-mono text-xs text-muted py-2 border-t border-black w-full justify-between mt-8">
                 <span>[ LATITUDE : 28.6139° N ]</span>
-                <span>[ STACK : PYTHON / C++ / JAVASCRIPT ]</span>
-                <span>[ STATUS : SOFTWARE ENGINEER @ KYC HUB ]</span>
+                <span>[ STACK : PYTHON / ROS 2 / C++ / TYPESCRIPT ]</span>
+                <span>[ FOCUS : PHYSICAL AI & INTELLIGENT SYSTEMS ]</span>
               </div>
             </div>
           </div>
@@ -318,10 +401,10 @@ function App() {
               </div>
               <div className="col-span-8 lg:col-span-12 flex flex-col gap-6">
                 <p className="text-xl text-black drop-cap-box leading-relaxed font-normal">
-                  I believed that software systems were logical structures of automation. My work focused on agentic systems and AI architectures. I engineered resilient distributed execution pipelines and automated document retrieval systems using LLMs. By designing code with strict mathematical alignments, we optimized operational efficiency and eliminated manual engineering overhead.
+                  I believe software achieves its highest leverage when it interfaces directly with the physical world. As an AI/ML and Software Engineer, my work centers on designing intelligent systems that bridge high-level multimodal cognition with physical actuators, real-time spatial memory, and robust distributed execution pipelines.
                 </p>
                 <p className="text-lg text-muted leading-relaxed">
-                  My engineering approach was architecturally structured around data flows and cognitive systems. From implementing real-time geospatial terminal trackers in Python at Hughes, to indexing multi-format candidate resumes in Elasticsearch at Shorthills AI, I built digital architectures that scaled cleanly and operated with absolute reliability.
+                  From architecting <strong>AERO</strong>—an embodied robotic manipulation studio pairing Google Gemini VLA reasoning with 60 FPS physics and ROS 2—to developing <strong>PaperScope AI</strong> for verifiable academic RAG literature synthesis, to deploying agentic DOM extraction workflows with Temporal at KYC Hub, I build computational architectures that are resilient, mathematically grounded, and rigorously performant.
                 </p>
               </div>
             </div>
@@ -345,18 +428,18 @@ function App() {
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 02 ]</div>
-                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">03</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">SOFTWARE ENGINEERING ROLES</div>
+                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">05+</div>
+                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">AI & ROBOTIC SYSTEMS</div>
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 03 ]</div>
-                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">03</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">AI & COGNITIVE PIPELINES</div>
+                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">60 FPS</div>
+                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">REAL-TIME PHYSICS KINEMATICS</div>
               </div>
               <div>
                 <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 04 ]</div>
-                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">06+</div>
-                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">DEV TOOLS & CLOUD PLATS</div>
+                <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">08+</div>
+                <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">FRAMEWORKS & CLOUD PLATS</div>
               </div>
             </div>
           </div>
@@ -402,18 +485,35 @@ function App() {
                 <div 
                   key={project.id} 
                   className="group cursor-pointer flex flex-col items-stretch text-left"
-                  onClick={() => setSelectedProject(project)}
+                  onClick={() => openProjectModal(project)}
                 >
                   {/* Card Container for Image */}
-                  <div className="relative border-2 border-black overflow-hidden aspect-[3/2] mb-6 transition-all duration-100 group-hover:border-[4px]">
+                  <div className="relative border-2 border-black overflow-hidden aspect-[3/2] mb-6 transition-all duration-100 group-hover:border-[4px] bg-neutral-100">
                     <img 
                       src={project.image} 
                       alt={project.title} 
                       className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
                     />
-                    <div className="absolute top-4 left-4 bg-black text-white font-mono text-xs px-3 py-1">
-                      {project.year}
+                    
+                    {/* Top Badges */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2">
+                      <span className="bg-black text-white font-mono text-xs px-3 py-1 font-semibold">
+                        {project.year}
+                      </span>
+                      {project.badge && (
+                        <span className="bg-white text-black border border-black font-mono text-xs px-2.5 py-1 font-bold">
+                          {project.badge}
+                        </span>
+                      )}
                     </div>
+
+                    {/* Live indicator if deployed */}
+                    {project.liveUrl && (
+                      <div className="absolute top-4 right-4 bg-black text-white font-mono text-xs px-3 py-1 flex items-center gap-2 font-bold">
+                        <span className="live-pulse" />
+                        <span>LIVE</span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex justify-between items-baseline mb-4 py-2 border-b border-neutral-200">
@@ -429,8 +529,39 @@ function App() {
                     {project.summary}
                   </p>
 
-                  <div className="flex items-center gap-2 font-mono text-xs text-black uppercase font-medium group-hover:underline">
-                    Analyze Specification <ArrowRight size={14} />
+                  {/* Card Action Row */}
+                  <div className="flex items-center justify-between pt-2 border-t border-neutral-200">
+                    <div className="flex items-center gap-2 font-mono text-xs text-black uppercase font-medium group-hover:underline">
+                      Analyze Specification <ArrowRight size={14} />
+                    </div>
+
+                    <div className="flex items-center gap-3" onClick={(e) => e.stopPropagation()}>
+                      {project.liveUrl && (
+                        <a 
+                          href={project.liveUrl} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="font-mono text-xs font-bold text-black flex items-center gap-1 hover:underline"
+                          title="Open Live App"
+                        >
+                          <Globe size={13} />
+                          <span>Demo</span>
+                          <ExternalLink size={11} />
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a 
+                          href={project.githubUrl} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="text-black hover:opacity-70 flex items-center gap-1 font-mono text-xs font-semibold"
+                          title="View GitHub Repository"
+                        >
+                          <GithubIcon size={14} />
+                          <span>Code</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -505,7 +636,7 @@ function App() {
                   TRANSMIT<br />A SIGNAL.
                 </h2>
                 <p className="text-lg text-neutral-400 leading-relaxed mb-8">
-                  Have a system configuration, structural redesign, or editorial project requiring strict discipline? Let us align. File your contact metrics and project details below to trigger an immediate connection loop.
+                  Have an intelligent system design, robotics manipulation inquiry, or engineering collaboration requiring strict discipline? Let us align. File your contact metrics and details below to trigger an immediate connection loop.
                 </p>
                 <div className="flex flex-col gap-4 font-mono text-xs text-neutral-300">
                   <div className="flex items-center gap-3">
@@ -515,20 +646,7 @@ function App() {
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-white"
-                    >
-                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2.2 6-7.5a5.6 5.6 0 0 0-1.3-3.8 5 5 0 0 0-.1-3.8s-.9-.3-3 1a17.9 17.9 0 0 0-9 0c-2.1-1.3-3-1-3-1a5 5 0 0 0-.1 3.8 5.6 5.6 0 0 0-1.3 3.8c0 5.3 3 7.5 6 7.5a4.8 4.8 0 0 0-1 3.5v4" />
-                    </svg>
+                    <GithubIcon size={16} className="text-white" />
                     <a href="https://github.com/incheif" target="_blank" rel="noreferrer" className="text-white focus-ring-light hover:underline">
                       github.com/incheif
                     </a>
@@ -593,7 +711,7 @@ function App() {
                       label="Signal Content (Message)" 
                       id="form-message"
                       multiline 
-                      placeholder="Detail your request or layout query..." 
+                      placeholder="Detail your request or engineering query..." 
                       required 
                       value={formState.message}
                       onChange={handleInputChange}
@@ -619,7 +737,7 @@ function App() {
           <div className="flex flex-row justify-between items-center md:flex-col md:gap-6 md:items-start text-left">
             <div>
               <span className="font-mono text-xs font-bold tracking-widest block uppercase mb-1">
-                DHRUV GUPTA / AUTOMATION ARCHITECTURE
+                DHRUV GUPTA / EMBODIED AI & ROBOTICS
               </span>
               <p className="font-mono text-xs text-muted">
                 COMPILED VIA VITE / REACT / TS / VANILLA CSS. ALL SYSTEM SHARP.
@@ -644,7 +762,10 @@ function App() {
       {selectedProject && (
         <div 
           className="fixed inset-0 z-100 flex items-center justify-center bg-black bg-opacity-70 p-6 md:p-4 overflow-y-auto"
-          onClick={() => setSelectedProject(null)}
+          onClick={() => {
+            setSelectedProject(null);
+            setActiveModalImage(null);
+          }}
         >
           {/* Modal Content */}
           <div 
@@ -657,31 +778,94 @@ function App() {
 
             <div className="relative z-10">
               {/* Header */}
-              <div className="flex justify-between items-baseline mb-8 pb-4 border-b-2 border-black">
-                <span className="font-mono text-xs tracking-widest text-muted uppercase">
-                  CASE SPECIFICATION / {selectedProject.category}
-                </span>
+              <div className="flex justify-between items-baseline mb-6 pb-4 border-b-2 border-black">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs tracking-widest text-muted uppercase">
+                    CASE SPECIFICATION / {selectedProject.category}
+                  </span>
+                  {selectedProject.badge && (
+                    <span className="bg-black text-white font-mono text-xs px-2 py-0.5 font-bold">
+                      {selectedProject.badge}
+                    </span>
+                  )}
+                </div>
                 <button 
-                  onClick={() => setSelectedProject(null)}
-                  className="border border-black px-4 py-2 font-mono text-xs uppercase hover:bg-black hover:text-white cursor-pointer bg-transparent focus-ring"
+                  onClick={() => {
+                    setSelectedProject(null);
+                    setActiveModalImage(null);
+                  }}
+                  className="border border-black px-4 py-2 font-mono text-xs uppercase hover:bg-black hover:text-white cursor-pointer bg-transparent focus-ring font-bold"
                 >
                   CLOSE
                 </button>
               </div>
 
-              {/* Title */}
-              <h2 className="text-5xl font-bold tracking-tight uppercase leading-none mb-8">
-                {selectedProject.title}
-              </h2>
+              {/* Title & Quick Actions */}
+              <div className="flex justify-between items-start gap-4 mb-6 flex-wrap">
+                <h2 className="text-4xl sm:text-5xl font-bold tracking-tight uppercase leading-none">
+                  {selectedProject.title}
+                </h2>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {selectedProject.liveUrl && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="border border-black px-3.5 py-2 font-mono text-xs uppercase bg-black text-white hover:bg-neutral-800 flex items-center gap-2 font-bold cursor-pointer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <Globe size={13} />
+                      Live Demo
+                      <ExternalLink size={11} />
+                    </a>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="border border-black px-3.5 py-2 font-mono text-xs uppercase bg-white text-black hover:bg-neutral-100 flex items-center gap-2 font-bold cursor-pointer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <GithubIcon size={13} />
+                      Repository
+                    </a>
+                  )}
+                </div>
+              </div>
 
-              {/* Image in Modal */}
-              <div className="border border-black w-full overflow-hidden aspect-[16/9] mb-8">
+              {/* Main Preview Image in Modal */}
+              <div className="border-2 border-black w-full overflow-hidden aspect-[16/9] mb-4 bg-neutral-100">
                 <img 
-                  src={selectedProject.image} 
+                  src={activeModalImage || selectedProject.image} 
                   alt={selectedProject.title} 
                   className="w-full h-full object-cover grayscale-0"
                 />
               </div>
+
+              {/* Screenshot Gallery Picker */}
+              {selectedProject.screenshots && selectedProject.screenshots.length > 1 && (
+                <div className="flex gap-3 mb-8 overflow-x-auto pb-2">
+                  {selectedProject.screenshots.map((s, idx) => {
+                    const isCurrent = (activeModalImage || selectedProject.image) === s.src;
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveModalImage(s.src)}
+                        className={`border-2 p-1.5 bg-white cursor-pointer transition-all flex items-center gap-2 text-left ${
+                          isCurrent ? 'border-black bg-neutral-100' : 'border-neutral-300 opacity-60 hover:opacity-100'
+                        }`}
+                        style={{ minWidth: '180px' }}
+                      >
+                        <img src={s.src} alt={s.label} className="w-16 h-10 object-cover border border-neutral-200" />
+                        <span className="font-mono text-xs text-neutral-800 leading-tight block">
+                          {s.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
 
               {/* Specification Grid */}
               <div className="grid grid-cols-12 gap-8 md:grid-cols-1 md:gap-6">
@@ -693,7 +877,7 @@ function App() {
                     <span className="text-black font-semibold uppercase">{selectedProject.role}</span>
                   </div>
                   <div>
-                    <span className="text-muted uppercase block">CLIENT</span>
+                    <span className="text-muted uppercase block">ORGANIZATION / CONTEXT</span>
                     <span className="text-black font-semibold uppercase">{selectedProject.client}</span>
                   </div>
                   <div>
@@ -704,6 +888,32 @@ function App() {
                     <span className="text-muted uppercase block">INTEGRATION LAYERS</span>
                     <span className="text-black font-semibold">{selectedProject.stack}</span>
                   </div>
+                  {selectedProject.liveUrl && (
+                    <div>
+                      <span className="text-muted uppercase block">DEPLOYED ENDPOINT</span>
+                      <a 
+                        href={selectedProject.liveUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="text-black font-semibold hover:underline block truncate"
+                      >
+                        {selectedProject.liveUrl}
+                      </a>
+                    </div>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <div>
+                      <span className="text-muted uppercase block">SOURCE REPOSITORY</span>
+                      <a 
+                        href={selectedProject.githubUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="text-black font-semibold hover:underline block truncate"
+                      >
+                        {selectedProject.githubUrl.replace('https://', '')}
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right Column: Case Details */}
@@ -714,14 +924,39 @@ function App() {
                   <p className="text-base text-muted leading-relaxed">
                     By focusing on flat layout designs, heavy rules, and structured lines, we ensured that the work does not distract with transient decorations. The result is a highly functional, visual system built on pure grid theory.
                   </p>
-                  <div className="mt-4 flex gap-4">
-                    <Button variant="primary" showArrow onClick={() => {
-                      alert('TRANSMITTING OUTBOUND: Connection to production endpoint simulates link redirection.');
-                    }}>
-                      Deploy Portal
-                    </Button>
-                    <Button variant="secondary" onClick={() => setSelectedProject(null)}>
-                      Return
+                  <div className="mt-4 flex gap-4 flex-wrap">
+                    {selectedProject.liveUrl && (
+                      <a 
+                        href={selectedProject.liveUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <Button variant="primary" showArrow>
+                          Launch Live Studio
+                        </Button>
+                      </a>
+                    )}
+                    {selectedProject.githubUrl && (
+                      <a 
+                        href={selectedProject.githubUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <Button variant="secondary">
+                          GitHub Repository ↗
+                        </Button>
+                      </a>
+                    )}
+                    <Button 
+                      variant="secondary" 
+                      onClick={() => {
+                        setSelectedProject(null);
+                        setActiveModalImage(null);
+                      }}
+                    >
+                      Return to Catalog
                     </Button>
                   </div>
                 </div>
