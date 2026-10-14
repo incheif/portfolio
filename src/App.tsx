@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ArrowRight, 
-  Menu, 
-  X, 
-  ArrowUp, 
-  Check, 
+import {
+  ArrowRight,
+  Menu,
+  X,
+  ArrowUp,
+  Check,
   Mail,
   ExternalLink,
   Globe
@@ -212,7 +212,7 @@ function App() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
-    
+
     setFormSubmitted(true);
     setTimeout(() => {
       setFormState({ name: '', email: '', message: '' });
@@ -241,7 +241,7 @@ function App() {
         <a href="#top" className="font-mono text-xs font-bold tracking-widest text-black focus-ring" style={{ textDecoration: 'none' }}>
           DHRUV GUPTA / AI/ML & SYSTEMS ARCHITECT
         </a>
-        
+
         {/* Desktop Navigation */}
         <nav className="flex items-center gap-2 md:flex md:flex-row md:items-center">
           <span className="md:inline-flex flex items-center gap-2 flex-wrap" style={{ display: 'flex' }}>
@@ -254,7 +254,7 @@ function App() {
         </nav>
 
         {/* Mobile Nav Trigger */}
-        <button 
+        <button
           onClick={() => setMenuOpen(true)}
           className="md:hidden flex items-center justify-center p-2 focus-ring text-black bg-transparent border-none cursor-pointer"
           aria-label="Open Navigation Menu"
@@ -269,8 +269,8 @@ function App() {
         <div className="fixed inset-0 z-100 bg-white flex flex-col p-8">
           <div className="flex justify-between items-center mb-12">
             <span className="font-mono text-xs font-bold tracking-widest uppercase">MENU</span>
-            <button 
-              onClick={() => setMenuOpen(false)} 
+            <button
+              onClick={() => setMenuOpen(false)}
               className="p-2 border-none bg-transparent cursor-pointer text-black focus-ring"
               aria-label="Close Navigation Menu"
             >
@@ -278,43 +278,43 @@ function App() {
             </button>
           </div>
           <nav className="flex flex-col gap-8 items-start justify-center flex-1">
-            <a 
-              href="#about" 
-              onClick={() => setMenuOpen(false)} 
+            <a
+              href="#about"
+              onClick={() => setMenuOpen(false)}
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
               01 / ABOUT
             </a>
-            <a 
-              href="#projects" 
-              onClick={() => setMenuOpen(false)} 
+            <a
+              href="#projects"
+              onClick={() => setMenuOpen(false)}
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
               02 / PORTFOLIO
             </a>
-            <a 
-              href="#experience" 
-              onClick={() => setMenuOpen(false)} 
+            <a
+              href="#experience"
+              onClick={() => setMenuOpen(false)}
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
               03 / MILESTONES
             </a>
-            <a 
-              href="#contact" 
-              onClick={() => setMenuOpen(false)} 
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
               04 / TRANSMIT
             </a>
-            <a 
-              href="/DhruvGupta-Resume.pdf" 
+            <a
+              href="/DhruvGupta-Resume.pdf"
               target="_blank"
               rel="noreferrer"
-              onClick={() => setMenuOpen(false)} 
+              onClick={() => setMenuOpen(false)}
               className="text-4xl font-bold tracking-tight text-black focus-ring"
               style={{ textDecoration: 'none' }}
             >
@@ -334,7 +334,7 @@ function App() {
         <section id="top" className="section-padding bg-white relative overflow-hidden" style={{ minHeight: '85vh', display: 'flex', alignItems: 'center' }}>
           {/* Subtle Grid Texture in Hero */}
           <div className="absolute inset-0 texture-grid opacity-5 pointer-events-none"></div>
-          
+
           <div className="container relative z-10 w-full flex flex-col items-start text-left">
             <span className="font-mono text-xs tracking-widest text-neutral-500 uppercase mb-4 block font-semibold">
               AI/ML ENGINEER & SYSTEMS ARCHITECT · DELHI TECHNOLOGICAL UNIVERSITY (DTU)
@@ -343,15 +343,15 @@ function App() {
               DHRUV<br />
               GUPTA
             </h1>
-            
+
             {/* Visual Punctuation (Thick rule with small bordered square) */}
             <div className="relative w-full mb-10" style={{ height: '8px' }}>
               <div className="hr-thick"></div>
-              <div 
+              <div
                 className="absolute bg-white px-4 flex items-center justify-center"
-                style={{ 
-                  top: '50%', 
-                  left: '10%', 
+                style={{
+                  top: '50%',
+                  left: '10%',
                   transform: 'translateY(-50%)',
                   height: '32px'
                 }}
@@ -361,7 +361,7 @@ function App() {
             </div>
 
             <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '52rem', lineHeight: '1.3' }}>
-              Applied AI engineer building agents that plan, reason, validate, and execute complex tasks. From autonomous data pipelines to RAG research tools and a language driven robotic arm, turning reasoning into reliable execution. Currently diving into physical AI and robotics.
+              Applied AI engineer building autonomous data pipelines to RAG research tools and a language driven robotic arm. Currently diving into physical AI and robotics.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -478,18 +478,17 @@ function App() {
                   SHIPPED WORKS
                 </h2>
               </div>
-              
+
               {/* Category Filter Controls */}
               <div className="flex gap-2 border border-black p-1">
                 {(['ALL', 'DEVELOPMENT', 'DESIGN'] as const).map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`font-mono text-xs tracking-widest uppercase px-4 py-2 border-none cursor-pointer focus-ring transition-colors duration-100 ${
-                      activeCategory === cat 
-                        ? 'bg-black text-white' 
+                    className={`font-mono text-xs tracking-widest uppercase px-4 py-2 border-none cursor-pointer focus-ring transition-colors duration-100 ${activeCategory === cat
+                        ? 'bg-black text-white'
                         : 'bg-transparent text-black hover:bg-neutral-100'
-                    }`}
+                      }`}
                   >
                     {cat}
                   </button>
@@ -500,8 +499,8 @@ function App() {
             {/* Editorial Project Placards Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-8">
               {filteredProjects.map((project, idx) => (
-                <div 
-                  key={project.id} 
+                <div
+                  key={project.id}
                   className="project-placard text-left"
                 >
                   {/* Top Placard Badge Bar: Clean Specimen Index & Category (NO repeated links) */}
@@ -526,19 +525,19 @@ function App() {
                   </div>
 
                   {/* Specimen Frame (Single Image) */}
-                  <div 
+                  <div
                     className="placard-specimen-frame cursor-pointer"
                     onClick={() => setSelectedProject(project)}
                   >
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
+                    <img
+                      src={project.image}
+                      alt={project.title}
                       className="placard-specimen-img"
                     />
                   </div>
 
                   {/* Placard Title */}
-                  <h3 
+                  <h3
                     className="placard-title cursor-pointer hover:underline"
                     onClick={() => setSelectedProject(project)}
                   >
@@ -573,7 +572,7 @@ function App() {
 
                   {/* Placard Footer Action Row: All outbound links are located here at the bottom */}
                   <div className="placard-footer">
-                    <button 
+                    <button
                       className="placard-action-btn"
                       onClick={() => setSelectedProject(project)}
                     >
@@ -582,10 +581,10 @@ function App() {
 
                     <div className="flex items-center gap-2">
                       {project.liveUrl && (
-                        <a 
-                          href={project.liveUrl} 
-                          target="_blank" 
-                          rel="noreferrer" 
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
                           className="placard-pill-btn primary"
                           title="Open Live Deployment"
                         >
@@ -595,10 +594,10 @@ function App() {
                         </a>
                       )}
                       {project.githubUrl && (
-                        <a 
-                          href={project.githubUrl} 
-                          target="_blank" 
-                          rel="noreferrer" 
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
                           className="placard-pill-btn"
                           title="View GitHub Repository"
                         >
@@ -640,8 +639,8 @@ function App() {
             {/* Compact 3-Column Grid */}
             <div className="grid grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-6">
               {EXPERIENCE_DATA.map((exp, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="timeline-card text-left"
                 >
                   <div>
@@ -679,7 +678,7 @@ function App() {
 
           <div className="container relative z-10">
             <div className="grid grid-cols-12 gap-12 lg:grid-cols-2 md:grid-cols-1 md:gap-8">
-              
+
               <div className="col-span-5 lg:col-span-12 text-left">
                 <span className="font-mono text-xs tracking-widest text-neutral-400 block mb-4 uppercase">
                   04 / COMMUNICATIONS
@@ -742,29 +741,29 @@ function App() {
                   </div>
                 ) : (
                   <form onSubmit={handleFormSubmit} className="flex flex-col gap-6">
-                    <TextField 
-                      label="Identifier Name" 
+                    <TextField
+                      label="Identifier Name"
                       id="form-name"
-                      placeholder="e.g. ALBERT SCHULZ" 
-                      required 
+                      placeholder="e.g. ALBERT SCHULZ"
+                      required
                       value={formState.name}
                       onChange={handleInputChange}
                     />
-                    <TextField 
-                      label="Digital Endpoint (Email)" 
+                    <TextField
+                      label="Digital Endpoint (Email)"
                       id="form-email"
-                      type="email" 
-                      placeholder="e.g. albert@schulz-labs.de" 
-                      required 
+                      type="email"
+                      placeholder="e.g. albert@schulz-labs.de"
+                      required
                       value={formState.email}
                       onChange={handleInputChange}
                     />
-                    <TextField 
-                      label="Signal Content (Message)" 
+                    <TextField
+                      label="Signal Content (Message)"
                       id="form-message"
-                      multiline 
-                      placeholder="Detail your request or engineering query..." 
-                      required 
+                      multiline
+                      placeholder="Detail your request or engineering query..."
+                      required
                       value={formState.message}
                       onChange={handleInputChange}
                     />
@@ -795,10 +794,10 @@ function App() {
                 COMPILED VIA VITE / REACT / TS / VANILLA CSS. ALL SYSTEM SHARP.
               </p>
             </div>
-            
+
             <div className="flex items-center gap-6 font-mono text-xs">
               <span className="text-muted">©2026 RESTRAINT STUDIO</span>
-              <button 
+              <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="flex items-center gap-2 border border-black px-4 py-2 hover:bg-black hover:text-white cursor-pointer bg-transparent focus-ring"
                 aria-label="Scroll to top of page"
@@ -812,12 +811,12 @@ function App() {
 
       {/* DETAILED PROJECT MODAL (GRID-BASED CASE STUDY DRAWER) */}
       {selectedProject && (
-        <div 
+        <div
           className="fixed inset-0 z-100 flex items-center justify-center bg-black bg-opacity-70 p-6 md:p-4 overflow-y-auto"
           onClick={() => setSelectedProject(null)}
         >
           {/* Modal Content */}
-          <div 
+          <div
             className="bg-white border-2 border-black w-full max-w-4xl p-8 md:p-6 relative text-left overflow-y-auto max-h-full"
             style={{ maxHeight: '90vh' }}
             onClick={(e) => e.stopPropagation()}
@@ -838,7 +837,7 @@ function App() {
                     </span>
                   )}
                 </div>
-                <button 
+                <button
                   onClick={() => setSelectedProject(null)}
                   className="border border-black px-4 py-2 font-mono text-xs uppercase hover:bg-black hover:text-white cursor-pointer bg-transparent focus-ring font-bold"
                 >
@@ -855,16 +854,16 @@ function App() {
 
               {/* Single Image Viewport Frame in Modal */}
               <div className="modal-image-frame">
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title} 
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
                   className="modal-image"
                 />
               </div>
 
               {/* Specification Grid */}
               <div className="grid grid-cols-12 gap-8 md:grid-cols-1 md:gap-6">
-                
+
                 {/* Left Column: Metadata */}
                 <div className="col-span-4 md:col-span-12 flex flex-col gap-4 font-mono text-xs border-r border-neutral-200 md:border-r-0 md:border-b md:pb-6 pr-4">
                   {/* Conditionally render Role only if present */}
@@ -902,10 +901,10 @@ function App() {
                   {selectedProject.liveUrl && (
                     <div>
                       <span className="text-muted uppercase block">DEPLOYED ENDPOINT</span>
-                      <a 
-                        href={selectedProject.liveUrl} 
-                        target="_blank" 
-                        rel="noreferrer" 
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         className="text-black font-semibold hover:underline block truncate"
                       >
                         {selectedProject.liveUrl}
@@ -915,10 +914,10 @@ function App() {
                   {selectedProject.githubUrl && (
                     <div>
                       <span className="text-muted uppercase block">SOURCE REPOSITORY</span>
-                      <a 
-                        href={selectedProject.githubUrl} 
-                        target="_blank" 
-                        rel="noreferrer" 
+                      <a
+                        href={selectedProject.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         className="text-black font-semibold hover:underline block truncate"
                       >
                         {selectedProject.githubUrl.replace('https://', '')}
@@ -956,10 +955,10 @@ function App() {
 
                   <div className="mt-4 flex gap-4 flex-wrap">
                     {selectedProject.liveUrl && (
-                      <a 
-                        href={selectedProject.liveUrl} 
-                        target="_blank" 
-                        rel="noreferrer" 
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         style={{ textDecoration: 'none' }}
                       >
                         <Button variant="primary" showArrow>
@@ -968,10 +967,10 @@ function App() {
                       </a>
                     )}
                     {selectedProject.githubUrl && (
-                      <a 
-                        href={selectedProject.githubUrl} 
-                        target="_blank" 
-                        rel="noreferrer" 
+                      <a
+                        href={selectedProject.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         style={{ textDecoration: 'none' }}
                       >
                         <Button variant="secondary">
@@ -979,8 +978,8 @@ function App() {
                         </Button>
                       </a>
                     )}
-                    <Button 
-                      variant="secondary" 
+                    <Button
+                      variant="secondary"
                       onClick={() => setSelectedProject(null)}
                     >
                       Return to Catalog
