@@ -59,7 +59,7 @@ const PROJECTS_DATA: Project[] = [
     image: '/aero_studio_tower.png',
     badge: 'PHYSICAL AI',
     githubUrl: 'https://github.com/incheif/Aero',
-    liveUrl: 'https://aero-studio.onrender.com/',
+    liveUrl: 'https://aero-live.onrender.com/',
     summary: 'Connecting machine intelligence to the physical world through multimodal VLA reasoning, 3D tabletop spatial semantic mapping, and 60 FPS physics kinematics.',
     content: 'AERO is an independently architected robotic manipulation platform connecting multimodal intelligence to physical operations. Translates natural-language instructions into tabletop manipulation trajectories using Google Gemini VLA reasoning, 3D spatial semantic affordance memories, and active frontier exploration. Operates closed-loop Cartesian trajectory planning and geometric inverse kinematics in 60 FPS Rapier3D physics, synchronizing with ROS 2 native message bridges and streaming real-time telemetry over WebSockets to an interactive Three.js WebGL digital twin studio.',
     highlights: [
@@ -78,7 +78,7 @@ const PROJECTS_DATA: Project[] = [
     image: '/02-paper-synthesis.png',
     badge: 'ENTERPRISE RAG',
     githubUrl: 'https://github.com/incheif/PaperScope-AI',
-    liveUrl: 'https://paperscope-ai.onrender.com/',
+    liveUrl: 'https://paper-scope.onrender.com/',
     summary: 'Building low-latency RAG architectures, multi-modal ingestion, and verifiable citation interrogation for academic literature synthesis.',
     content: 'An independently developed academic research synthesis platform featuring dual-pane split-screen manuscript analysis, multi-document cross-examination, and verifiable citation attribution. Implemented hybrid LLM routing between Google Gemini 2.5 and Groq-hosted Llama 3.3 70B with sub-second streaming. Developed an adaptive chunking engine (fine-grained passage, balanced paragraph, coarse context) with PyMuPDF extraction, alongside an interactive citation system with clickable [Page X] chips linking directly to verbatim archival manuscript excerpts.',
     highlights: [
