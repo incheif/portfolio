@@ -249,7 +249,7 @@ function App() {
             <a href="#projects" className="nav-link focus-ring">02 / Works</a>
             <a href="#experience" className="nav-link focus-ring">03 / Timeline</a>
             <a href="#contact" className="nav-link focus-ring">04 / CTA</a>
-            <a href="/Dhruv_Gupta_Resume.pdf" target="_blank" rel="noreferrer" className="nav-link focus-ring">05 / Resume</a>
+            <a href="/DhruvGupta-Resume.pdf" target="_blank" rel="noreferrer" className="nav-link focus-ring">05 / Resume</a>
           </span>
         </nav>
 
@@ -311,7 +311,7 @@ function App() {
               04 / TRANSMIT
             </a>
             <a 
-              href="/Dhruv_Gupta_Resume.pdf" 
+              href="/DhruvGupta-Resume.pdf" 
               target="_blank"
               rel="noreferrer"
               onClick={() => setMenuOpen(false)} 
@@ -361,7 +361,7 @@ function App() {
             </div>
 
             <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '52rem', lineHeight: '1.3' }}>
-              I am an Applied AI Engineer. I design AI workflows that self-plan, validate, and execute complex operations. Currently diving into physical AI and robotics.
+              Applied AI engineer building agents that plan, reason, validate, and execute complex tasks. From autonomous data pipelines to RAG research tools and a language driven robotic arm, turning reasoning into reliable execution. Currently diving into physical AI and robotics.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
@@ -378,7 +378,7 @@ function App() {
                 }}>
                   Transmit Signal
                 </Button>
-                <a href="/Dhruv_Gupta_Resume.pdf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+                <a href="/DhruvGupta-Resume.pdf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
                   <Button variant="secondary">View Resume</Button>
                 </a>
               </div>
