@@ -54,18 +54,18 @@ const PROJECTS_DATA: Project[] = [
     title: 'AERO: AGENTIC ROBOTIC OPERATIONS',
     category: 'DEVELOPMENT',
     categories: ['DEVELOPMENT'],
-    stack: 'ROS 2 / Google Gemini VLA / Three.js WebGL / Rapier3D / Python / FastAPI',
+    stack: 'Python / FastAPI / Three.js WebGL / Google Gemini / Analytical IK / WebSockets',
     year: '2026',
     image: '/aero_studio_tower.png',
-    badge: 'PHYSICAL AI',
+    badge: 'ROBOTICS SIMULATION',
     githubUrl: 'https://github.com/incheif/Aero',
     liveUrl: 'https://aero-live.onrender.com/',
-    summary: 'Connecting machine intelligence to the physical world through multimodal VLA reasoning, 3D tabletop spatial semantic mapping, and 60 FPS physics kinematics.',
-    content: 'AERO is an independently architected robotic manipulation platform connecting multimodal intelligence to physical operations. Translates natural-language instructions into tabletop manipulation trajectories using Google Gemini VLA reasoning, 3D spatial semantic affordance memories, and active frontier exploration. Operates closed-loop Cartesian trajectory planning and geometric inverse kinematics in 60 FPS Rapier3D physics, synchronizing with ROS 2 native message bridges and streaming real-time telemetry over WebSockets to an interactive Three.js WebGL digital twin studio.',
+    summary: 'Simulated 5-DOF robotic manipulation platform combining Google Gemini multimodal task reasoning, analytical geometric IK, 3D spatial affordance mapping, and real-time Three.js visualization.',
+    content: 'AERO is an independently architected robotic manipulation simulation platform modeling multi-step tabletop operations for a 5-DOF articulated robot arm. Translates natural-language instructions into manipulation plans using Google Gemini multimodal vision reasoning paired with an offline deterministic planner. Generates continuous Cartesian trajectories via analytical geometric inverse kinematics and velocity-bounded joint interpolation in a custom 60 Hz Python physics and kinematic environment. Features 3D spatial semantic affordance tracking, multi-quadrant workspace scanning, session-isolated FastAPI backends, and real-time WebSocket telemetry streaming to an interactive Three.js WebGL digital twin studio.',
     highlights: [
-      'Gemini VLA reasoning & 3D tabletop spatial semantic mapping',
-      '60 FPS Rapier3D physics kinematics with Cartesian trajectory interpolation',
-      'Interactive Three.js 3D WebGL digital twin studio with native ROS 2 topic bridges'
+      'Multimodal Gemini task reasoning with offline deterministic fallback planning',
+      '5-DOF analytical geometric IK with Cartesian path interpolation in 60 Hz Python physics',
+      'Interactive Three.js 3D WebGL digital twin studio with real-time WebSocket telemetry'
     ]
   },
   {
@@ -448,17 +448,14 @@ function App() {
           <div className="container relative z-10">
             <div className="grid grid-cols-3 md:grid-cols-1 gap-12 md:gap-8 text-left">
               <div>
-                <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 01 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">8.13</div>
                 <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">CUMULATIVE BTECH GPA (DTU)</div>
               </div>
               <div>
-                <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 02 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">06+</div>
                 <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">SHIPPED ARCHITECTURES & SYSTEMS</div>
               </div>
               <div>
-                <div className="font-mono text-xs tracking-widest text-neutral-400 mb-2">[ METRIC 03 ]</div>
                 <div className="text-7xl font-bold tracking-tighter leading-none mb-2 font-display">08+</div>
                 <div className="font-mono text-xs tracking-widest text-neutral-300 uppercase">DEV TOOLS, ROBOTICS & CLOUD PLATS</div>
               </div>
