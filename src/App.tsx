@@ -472,7 +472,7 @@ function App() {
             </div>
 
             <p className="text-3xl italic font-normal text-black mb-12 tracking-tight" style={{ maxWidth: '52rem', lineHeight: '1.3' }}>
-              Applied AI engineer building agents that plan, reason, validate, and execute complex tasks. From autonomous data pipelines to RAG research tools and a language driven robotic arm, turning reasoning into reliable execution. Currently exploring physical AI and robotics.
+              Applied AI engineer building autonomous data pipelines to RAG research tools and a language driven robotic arm. Currently diving into physical AI and robotics.
             </p>
 
             <div className="flex flex-wrap gap-8 w-full justify-between items-end md:flex-col md:items-start md:gap-6 mt-4">
